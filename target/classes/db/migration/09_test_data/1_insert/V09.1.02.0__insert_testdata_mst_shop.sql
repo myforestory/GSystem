@@ -1,0 +1,27 @@
+-- 店舗マスタ
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_01','店舗A','1000000','住所A','09048378610','2019-12-20 01:59:42','2019-12-04 07:59:38');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_02','店舗B','3000000','住所B','08019162995','2019-01-17 14:56:05','2019-05-09 03:59:00');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_03','店舗C','4000000','住所C','09043895445','2019-05-17 18:57:02','2019-04-28 09:21:51');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_04','店舗D','5000000','住所D','08008514814','2019-04-24 13:42:46','2019-06-06 09:09:59');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_05','店舗E','6000000','住所E','09016629954','2019-10-11 16:01:56','2019-10-28 09:07:47');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_06','店舗F','7000000','住所F','08094692907','2019-05-30 00:28:54','2019-05-25 23:16:38');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_07','店舗G','8000000','住所G','09076611417','2019-07-13 18:22:20','2019-07-17 18:39:11');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_08','店舗H','9000000','住所H','09049246330','2019-05-12 16:39:17','2019-04-10 17:53:04');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_09','店舗I','1000000','住所I','08066683849','2019-08-26 00:08:14','2019-07-13 19:41:49');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_10','店舗J','1000000','住所J','08095261692','2019-09-07 15:51:57','2019-08-08 03:00:56');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_11','店舗K','1000000','住所K','08038621491','2019-07-06 23:33:03','2019-08-24 05:32:36');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_12','店舗L','1000000','住所L','09004795636','2019-11-24 15:49:36','2019-06-15 11:10:01');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_13','店舗M','1000000','住所M','09071662896','2019-10-13 21:40:24','2019-09-10 13:11:36');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_14','店舗N','1000000','住所N','08058450957','2019-10-13 15:30:50','2019-12-16 08:04:34');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_15','店舗O','1000000','住所O','08069275763','2019-08-30 14:14:56','2019-03-31 12:14:48');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_16','店舗P','1000000','住所P','08007301947','2019-01-16 11:38:37','2019-03-23 18:16:02');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_17','店舗Q','1000000','住所Q','08019019427','2019-06-23 08:11:06','2019-11-30 10:53:20');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_18','店舗R','1000000','住所R','09046599063','2019-05-06 04:07:29','2019-01-07 13:11:44');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_19','店舗S','1000000','住所S','08042558859','2019-09-19 10:23:43','2019-02-25 08:25:31');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_20','店舗T','1000000','住所T','09070794625','2019-03-03 17:31:16','2019-02-17 13:01:46');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_21','店舗U','1000000','住所U','09078498398','2019-02-23 10:27:01','2019-09-06 16:32:22');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_22','店舗V','1000000','住所V','08063666064','2019-01-04 21:59:03','2019-04-26 08:36:55');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_23','店舗W','1000000','住所W','09095741541','2019-07-17 01:43:56','2019-01-06 13:24:10');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_24','店舗X','1000000','住所X','09053511678','2019-04-21 23:52:16','2019-06-21 20:35:08');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_25','店舗Y','1000000','住所Y','08023464670','2019-04-01 01:55:41','2019-03-17 23:21:25');
+INSERT IGNORE INTO `mst_shop` (`shop_no`,`shop_name`,`postal_code`,`address`,`tel`,`insert_time`,`update_time`) VALUES ('sh_26','店舗Z','1000000','住所Z','09050140295','2019-03-02 14:13:52','2019-10-15 19:04:42');

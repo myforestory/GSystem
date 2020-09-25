@@ -1,0 +1,360 @@
+{
+  "groups": [
+    {
+      "name": "batch-setting",
+      "type": "com.ever.gsystem.constants.properties.BatchSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.BatchSetting"
+    },
+    {
+      "name": "counter-setting",
+      "type": "com.ever.gsystem.constants.properties.CounterSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.CounterSetting"
+    },
+    {
+      "name": "counter-setting.box-no",
+      "type": "com.ever.gsystem.constants.properties.BoxNoSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.BoxNoSetting"
+    },
+    {
+      "name": "counter-setting.wes-no",
+      "type": "com.ever.gsystem.constants.properties.WesNoSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.WesNoSetting"
+    },
+    {
+      "name": "equipment-setting",
+      "type": "com.ever.gsystem.constants.properties.EquipmentSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.EquipmentSetting"
+    },
+    {
+      "name": "io",
+      "type": "com.ever.gsystem.constants.properties.IoSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.IoSetting"
+    },
+    {
+      "name": "io.io-message",
+      "type": "com.ever.gsystem.constants.properties.IoMessage",
+      "sourceType": "com.ever.gsystem.constants.properties.IoMessage"
+    },
+    {
+      "name": "io.outbnd-client",
+      "type": "com.ever.gsystem.constants.properties.OutbndClient",
+      "sourceType": "com.ever.gsystem.constants.properties.OutbndClient"
+    },
+    {
+      "name": "item-scan-setting",
+      "type": "com.ever.gsystem.constants.properties.ItemScanSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.ItemScanSetting"
+    },
+    {
+      "name": "printer",
+      "type": "com.ever.gsystem.constants.properties.PrinterSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.PrinterSetting"
+    },
+    {
+      "name": "rfid-decode-setting",
+      "type": "com.ever.gsystem.constants.properties.RfidDecodeSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.RfidDecodeSetting"
+    },
+    {
+      "name": "scan-code-setting",
+      "type": "com.ever.gsystem.constants.properties.ScanCodeSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.ScanCodeSetting"
+    },
+    {
+      "name": "sort-plan-setting",
+      "type": "com.ever.gsystem.constants.properties.SortPlanSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.SortPlanSetting"
+    },
+    {
+      "name": "springboot",
+      "type": "com.ever.gsystem.constants.properties.SpringbootSetting",
+      "sourceType": "com.ever.gsystem.constants.properties.SpringbootSetting"
+    },
+    {
+      "name": "task-history",
+      "type": "com.ever.gsystem.constants.properties.TaskHistorySetting",
+      "sourceType": "com.ever.gsystem.constants.properties.TaskHistorySetting"
+    }
+  ],
+  "properties": [
+    {
+      "name": "batch-setting.show-temporary-holding",
+      "type": "java.lang.String",
+      "description": "一時保留ボタン表示 . <p> バッチ管理画面の一時保留ボタンの表示設定を行う。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.BatchSetting"
+    },
+    {
+      "name": "counter-setting.box-no",
+      "type": "com.ever.gsystem.constants.properties.BoxNoSetting",
+      "description": "箱番号自動採番設定. <p> 箱番号のカウンタ設定。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.CounterSetting"
+    },
+    {
+      "name": "counter-setting.box-no.counter-name",
+      "type": "java.lang.String",
+      "description": "カウンタ名 . <p> カウンタマスタの箱番号採番時のカウンタ名の設定を行う。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.BoxNoSetting"
+    },
+    {
+      "name": "counter-setting.box-no.date-format",
+      "type": "java.util.HashMap<java.lang.String,java.lang.String>",
+      "description": "日付フォーマット. <p> 箱番号採番時の日付の形式の設定を行う。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.BoxNoSetting"
+    },
+    {
+      "name": "counter-setting.box-no.date-time-zone",
+      "type": "java.lang.String",
+      "description": "タイムゾーン. <p> 日付取得時のタイムゾーンの設定を行う。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.BoxNoSetting"
+    },
+    {
+      "name": "counter-setting.box-no.key-prefix",
+      "type": "java.lang.String",
+      "description": "キーのプレフィックス . <p> カウンタマスタの箱番号採番時のキーのプレフィックスの設定を行う。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.BoxNoSetting"
+    },
+    {
+      "name": "counter-setting.box-no.max-value",
+      "type": "java.lang.Long",
+      "description": "最大値. <p> カウンタマスタの箱番号の最大値の設定を行う。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.BoxNoSetting"
+    },
+    {
+      "name": "counter-setting.box-no.string-format",
+      "type": "java.lang.String",
+      "description": "採番後フォーマット. <p> タスク明細に設定する箱番号のフォーマットの設定を行う。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.BoxNoSetting"
+    },
+    {
+      "name": "counter-setting.device-id",
+      "type": "java.util.List<com.ever.gsystem.constants.properties.DeviceIdSetting>",
+      "description": "デバイスID 自動採番設定. <p> デバイスIDのカウンタ設定。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.CounterSetting"
+    },
+    {
+      "name": "counter-setting.wes-no.counter-name",
+      "type": "java.lang.String",
+      "description": "カウンタ名 . <p> カウンタマスタのWES No採番時のカウンタ名の設定を行う。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.WesNoSetting"
+    },
+    {
+      "name": "counter-setting.wes-no.key-name",
+      "type": "java.lang.String",
+      "description": "キー名 . <p> カウンタマスタのWES No採番時のキー名の設定を行う。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.WesNoSetting"
+    },
+    {
+      "name": "counter-setting.wes-no.max-value",
+      "type": "java.lang.Long",
+      "description": "最大値. <p> カウンタマスタの箱番号の最大値の設定を行う。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.WesNoSetting"
+    },
+    {
+      "name": "equipment-setting.default-tile-angle",
+      "type": "java.lang.Short",
+      "description": "デフォルトの傾き（度）.",
+      "sourceType": "com.ever.gsystem.constants.properties.EquipmentSetting"
+    },
+    {
+      "name": "equipment-setting.tile-angle-setting-source",
+      "type": "com.ever.gsystem.constants.properties.EquipmentSetting$TileAngleSetting",
+      "description": "傾き設定元.",
+      "sourceType": "com.ever.gsystem.constants.properties.EquipmentSetting"
+    },
+    {
+      "name": "io.inbnd-server",
+      "type": "com.ever.gsystem.constants.properties.InbndServer",
+      "description": "インバウンドサーバ（WCSクライアント→中間システムサーバ）設定.",
+      "sourceType": "com.ever.gsystem.constants.properties.IoSetting"
+    },
+    {
+      "name": "io.io-message",
+      "type": "com.ever.gsystem.constants.properties.IoMessage",
+      "description": "インバウンドサーバ\/アウトバウンドクライアントのメッセージ設定.",
+      "sourceType": "com.ever.gsystem.constants.properties.IoSetting"
+    },
+    {
+      "name": "io.io-message.message-type",
+      "type": "com.ever.gsystem.constants.properties.MessageType",
+      "description": "メッセージタイプ.",
+      "sourceType": "com.ever.gsystem.constants.properties.IoMessage"
+    },
+    {
+      "name": "io.outbnd-client",
+      "type": "com.ever.gsystem.constants.properties.OutbndClient",
+      "description": "アウトバウンドクライアント設定.",
+      "sourceType": "com.ever.gsystem.constants.properties.IoSetting"
+    },
+    {
+      "name": "io.outbnd-client.body-encode",
+      "type": "java.nio.charset.Charset",
+      "description": "ボディのエンコード.",
+      "sourceType": "com.ever.gsystem.constants.properties.OutbndClient"
+    },
+    {
+      "name": "io.outbnd-client.heartbeattime",
+      "type": "java.lang.Integer",
+      "sourceType": "com.ever.gsystem.constants.properties.OutbndClient",
+      "defaultValue": 0
+    },
+    {
+      "name": "io.outbnd-client.start-delaytime",
+      "type": "java.lang.String",
+      "description": "クライアントの起動遅延時間（ミリ秒）.",
+      "sourceType": "com.ever.gsystem.constants.properties.OutbndClient"
+    },
+    {
+      "name": "io.outbnd-client.updatetime",
+      "type": "java.lang.Integer",
+      "description": "イベント発生間隔（ミリ秒）.",
+      "sourceType": "com.ever.gsystem.constants.properties.OutbndClient",
+      "defaultValue": 0
+    },
+    {
+      "name": "io.systemname",
+      "type": "java.lang.String",
+      "description": "中間システムのシステム名（英数字10桁まで）. <p> WCSへ送信するメッセージのSourceに設定される。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.IoSetting"
+    },
+    {
+      "name": "io.wcs-server",
+      "type": "com.ever.gsystem.constants.properties.WcsServer",
+      "description": "WCSサーバ（中間システムクライアント→WCSサーバ）設定.",
+      "sourceType": "com.ever.gsystem.constants.properties.IoSetting"
+    },
+    {
+      "name": "item-scan-setting.rules",
+      "type": "java.util.List<com.ever.gsystem.constants.properties.ItemCodeeMidRule>",
+      "description": "Item Code切り出しルールリスト.",
+      "sourceType": "com.ever.gsystem.constants.properties.ItemScanSetting"
+    },
+    {
+      "name": "item-scan-setting.scan-mode",
+      "type": "com.ever.gsystem.constants.properties.ItemScanSetting$ScanMode",
+      "description": "スキャンモード.",
+      "sourceType": "com.ever.gsystem.constants.properties.ItemScanSetting"
+    },
+    {
+      "name": "item-scan-setting.tc-task-type",
+      "type": "java.lang.Byte",
+      "description": "TCモードのタスクタイプ.",
+      "sourceType": "com.ever.gsystem.constants.properties.ItemScanSetting"
+    },
+    {
+      "name": "printer.printing-date-format",
+      "type": "java.lang.String",
+      "description": "印刷日時フォーマット. <p> キー：プレースフォルダの囲み文字無し文字列。<br> 値：{@link SimpleDateFormat}の指定形式。<br> <br> 例）「2019年1月2日 3時4分5秒6ミリ秒」を例にします。<br> yyyyMMdd_HHmmss_SSS：20190102_030405_006<br> yyMd_Hms_S：1912_345_6（一桁系は0埋めしなくなる。また、年の場合は2桁「yy」までとなる）<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.PrinterSetting"
+    },
+    {
+      "name": "printer.printing-date-time-zone",
+      "type": "java.lang.String",
+      "description": "印刷日時タイムゾーン. <p> タイムゾーンを指定する。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.PrinterSetting"
+    },
+    {
+      "name": "rfid-decode-setting.check-digit-correction",
+      "type": "java.lang.Boolean",
+      "description": "チェックディジット補正有無.",
+      "sourceType": "com.ever.gsystem.constants.properties.RfidDecodeSetting",
+      "defaultValue": false
+    },
+    {
+      "name": "rfid-decode-setting.converting-rule",
+      "type": "com.ever.gsystem.constants.properties.RfidDecodeSetting$ConvertingRule",
+      "description": "変換ルール.",
+      "sourceType": "com.ever.gsystem.constants.properties.RfidDecodeSetting"
+    },
+    {
+      "name": "rfid-decode-setting.rules",
+      "type": "java.util.List<com.ever.gsystem.constants.properties.RfidDecodeRule>",
+      "description": "RFIDデコードルールリスト.",
+      "sourceType": "com.ever.gsystem.constants.properties.RfidDecodeSetting"
+    },
+    {
+      "name": "scan-code-setting.check-digit-correction",
+      "type": "java.lang.Boolean",
+      "description": "チェックディジット補正有無.",
+      "sourceType": "com.ever.gsystem.constants.properties.ScanCodeSetting",
+      "defaultValue": false
+    },
+    {
+      "name": "scan-code-setting.item-code-multiple-existed-if-process",
+      "type": "java.lang.Boolean",
+      "description": "Item Code複数存在処理フラグ.",
+      "sourceType": "com.ever.gsystem.constants.properties.ScanCodeSetting",
+      "defaultValue": false
+    },
+    {
+      "name": "sort-plan-setting.batch-no-date-format",
+      "type": "java.util.HashMap<java.lang.String,java.lang.String>",
+      "description": "バッチ番号内の日付フォーマット. <p> キー：プレースフォルダの囲み文字無し文字列。<br> 値：{@link SimpleDateFormat}の指定形式。<br> <br> 例）「2019年1月2日 3時4分5秒6ミリ秒」を例にします。<br> yyyyMMdd_HHmmss_SSS：20190102_030405_006<br> yyMd_Hms_S：1912_345_6（一桁系は0埋めしなくなる。また、年の場合は2桁「yy」までとなる）<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.SortPlanSetting"
+    },
+    {
+      "name": "sort-plan-setting.batch-no-date-time-zone",
+      "type": "java.lang.String",
+      "description": "バッチ番号内の日付タイムゾーン. <p> 日付のタイムゾーンを指定する。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.SortPlanSetting"
+    },
+    {
+      "name": "sort-plan-setting.batch-no-format",
+      "type": "java.lang.String",
+      "description": "バッチ番号フォーマット.",
+      "sourceType": "com.ever.gsystem.constants.properties.SortPlanSetting"
+    },
+    {
+      "name": "sort-plan-setting.sort-plan-arrival-key-name",
+      "type": "java.lang.String",
+      "description": "仕分けプラン到着キー名. <p> バッチ番号の発送キー名として使用。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.SortPlanSetting"
+    },
+    {
+      "name": "sort-plan-setting.sort-plan-send-key-name",
+      "type": "java.lang.String",
+      "description": "仕分けプラン発送キー名. <p> バッチ番号の発送キー名として使用。<br> <\/p>",
+      "sourceType": "com.ever.gsystem.constants.properties.SortPlanSetting"
+    },
+    {
+      "name": "springboot.can-get-restarted",
+      "type": "java.lang.Boolean",
+      "description": "APIサーバの再起動にGETリクエストも使えるようにする（true:GETで再起動できるようにする、false:GETで再起動できないようにする）.",
+      "sourceType": "com.ever.gsystem.constants.properties.SpringbootSetting",
+      "defaultValue": false
+    },
+    {
+      "name": "springboot.can-restarted",
+      "type": "java.lang.Boolean",
+      "description": "APIサーバの再起動設定（true:APIリクエストで再起動できるようにする、false:APIリクエストで再起動できないようにする）.",
+      "sourceType": "com.ever.gsystem.constants.properties.SpringbootSetting",
+      "defaultValue": false
+    },
+    {
+      "name": "springboot.cron",
+      "type": "com.ever.gsystem.constants.properties.Cron",
+      "description": "cronスケジュール設定.",
+      "sourceType": "com.ever.gsystem.constants.properties.SpringbootSetting"
+    },
+    {
+      "name": "springboot.get-validator",
+      "type": "java.lang.Boolean",
+      "description": "GETリクエストのバリデーション（true:行う、false:行わない）.",
+      "sourceType": "com.ever.gsystem.constants.properties.SpringbootSetting",
+      "defaultValue": false
+    },
+    {
+      "name": "springboot.security",
+      "type": "com.ever.gsystem.constants.properties.Security",
+      "description": "セキュリティ設定.",
+      "sourceType": "com.ever.gsystem.constants.properties.SpringbootSetting"
+    },
+    {
+      "name": "task-history.batch-associated-task-if-batch-are-you-sure-that-delete",
+      "type": "java.lang.Boolean",
+      "description": "バッチに紐づいているタスクがない場合、バッチを削除する.",
+      "sourceType": "com.ever.gsystem.constants.properties.TaskHistorySetting",
+      "defaultValue": false
+    }
+  ],
+  "hints": []
+}

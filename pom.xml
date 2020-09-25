@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.ever</groupId>
+    <artifactId>gsystem</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>GSystem</name>
+    <description>GSystem</description>
+
+    <!--Property settings-->
+    <properties>
+        <!--Main settings-->
+        <project.build.sourceEncoding> UTF-8 </project.build.sourceEncoding>
+        <java.version>11</java.version>
+        <!--Spring Boot Core Library Group-->
+        <mybatis-spring-boot-starter.version> 2.1.1 </mybatis-spring-boot-starter.version>
+        <!--Test related-->
+        <junit-json-params.version> 5.5.2-r0 </junit-json-params.version>
+        <spring-test-dbunit.version> 1.3.0 </spring-test-dbunit.version>
+        <dbunit.version> 2.6.0 </dbunit.version>
+        <!--Utility-->
+        <jbvext.version>0.0.11</jbvext.version>
+        <mapstruct.version>1.3.1.Final</mapstruct.version>
+        <guava.version>28.2-jre</guava.version>
+        <orangesignal-csv.version>2.2.1</orangesignal-csv.version>
+        <libphonenumber.version>8.11.3</libphonenumber.version>
+        <jasperreports.version>6.11.0</jasperreports.version>
+        <spotbugs-annotations.version>3.1.12</spotbugs-annotations.version>
+        <fastutil.version>8.3.0</fastutil.version>
+        <commons-text.version>1.8</commons-text.version>
+        <!--Springfox library set-->
+        <springfox.version> 2.10.5 </springfox.version>
+        <swagger.version> 1.6.1 </swagger.version>
+        <spring-plugin-core.version> 2.0.0.RELEASE </spring-plugin-core.version>
+        <!--Local library (lib)-->
+        <epctagcoder.version> 0.0.6-SNAPSHOT </epctagcoder.version>
+        <epctagcoder.jar.path> ${basedir} /lib/epctagcoder-0.0.6-SNAPSHOT.jar </epctagcoder.jar.path>
+        <bcpissuelibrary.version> 1.0 </bcpissuelibrary.version>
+        <bcpissuelibrary.jar.path> ${basedir} /lib/bcpissuelibrary.jar </bcpissuelibrary.jar.path>
+        <!--Build Plugin-->
+        <delombok.version> 1.18.10.0 </delombok.version>
+        <jacoco-maven-plugin.version> 0.8.2 </jacoco-maven-plugin.version>
+        <spotbugs-maven-plugin.version> 3.1.12.2 </spotbugs-maven-plugin.version>
+        <spotbugs.version> 4.0.0-beta4 </spotbugs.version>
+        <spotbugs.plugin.directory.path> spotbugsplugins </spotbugs.plugin.directory.path>
+        <fb-contrib.version> 7.4.7 </fb-contrib.version>
+        <findsecbugs-plugin.version> 1.10.1 </findsecbugs-plugin.version>
+        <swagger-codegen-maven-plugin.version> 2.4.10 </swagger-codegen-maven-plugin.version>
+    </properties>
+
+    <!--Repository settings-->
+    <repositories>
+        <!--Maven Central Repository-->
+        <repository>
+            <id> central </id>
+            <url> https://repo1.maven.org/maven2/ </url>
+        </repository>
+
+        <!--JCenter repository-->
+        <repository>
+            <id> jcenter </id>
+            <url> https://jcenter.bintray.com/ </url>
+        </repository>
+
+        <!--JFrog repository-->
+        <repository>
+            <name> jcenter </name>
+            <id> jcenter-snapshots </id>
+            <url> https://oss.jfrog.org/artifactory/oss-snapshot-local/ </url>
+        </repository>
+    </repositories>
+
+    <!--Dependency settings-->
+    <dependencies>
+        <!--Spring Boot Core Library Group ============================-->
+        <!--[Spring Data JPA Library]-->
+        <!--Used for accessing DB, managing transactions, and mapping with Java objects. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+
+
+
+        <!--[Spring Boot Starter WEB Library]-->
+        <!--Used to create web apps with Spring Boot. -->
+        <!--Create a jar with built-in Tomcat. Mutual conversion of request / response object ⇔ JSON by Jackson. -->
+        <!--You will be able to perform request / response Varidataion (verification). -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--[Spring Boot Starter Thymeleaf Library]-->
+        <!--Template engine for displaying the WEB. -->
+        <dependency>
+            <groupId> org.springframework.boot </groupId>
+            <artifactId> spring-boot-starter-thymeleaf </artifactId>
+        </dependency>
+
+        <!--[Spring Boot MyBatis Library]-->
+        <!--A library that allows you to use MyBatis to connect to the DB. -->
+        <dependency>
+            <groupId> org.mybatis.spring.boot </groupId>
+            <artifactId> mybatis-spring-boot-starter </artifactId>
+            <version> ${mybatis-spring-boot-starter.version} </version>
+        </dependency>
+
+        <!--[Spring Boot Configuration Processor Library]-->
+        <!--Introduced to configure settings for having multiple data sources. -->
+        <dependency>
+            <groupId> org.springframework.boot </groupId>
+            <artifactId> spring-boot-configuration-processor </artifactId>
+            <optional> true </optional> <!--Do not package in jar / war as it is only needed when compiling-->
+        </dependency>
+
+        <!--[Spring Boot Actuator Library]-->
+        <!--Add endpoint URI for analysis. -->
+        <!--Endpoint list: https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-->
+        <dependency>
+            <groupId> org.springframework.boot </groupId>
+            <artifactId> spring-boot-starter-actuator </artifactId>
+        </dependency>
+
+        <!--[Spring Data REST Library]-->
+        <!--Add an endpoint URI that can call the repository directly. -->
+        <dependency>
+            <groupId> org.springframework.boot </groupId>
+            <artifactId> spring-boot-starter-data-rest </artifactId>
+        </dependency>
+
+        <!--[Spring Boot Dev Tools Library]-->
+        <!--Add a useful development aid module for development. -->
+        <dependency>
+            <groupId> org.springframework.boot </groupId>
+            <artifactId> spring-boot-devtools </artifactId>
+            <optional> true </optional> <!--Do not package in jar / war as it is not a production tool-->
+        </dependency>
+        <!-- ========================================================= -->
+
+        <!--Netty relationship ============================================ ===-->
+        <!--[Netty-All Library]-->
+        <!--Use Netty to perform Inbound / Outbound processing. -->
+        <dependency>
+            <groupId> io.netty </groupId>
+            <artifactId> netty-all </artifactId>
+        </dependency>
+        <!--============================================== ===========-->
+
+        <!--Test related ============================================ ===-->
+        <!--[Spring Boot Starter Test Library]-->
+        <!--Used for testing with Spring Boot. -->
+        <dependency>
+            <groupId> org.springframework.boot </groupId>
+            <artifactId> spring-boot-starter-test </artifactId>
+            <scope> test </scope>
+        </dependency>
+
+        <!--[Junit Json Params Library]-->
+        <!--A test library that can perform JUnit 5 @ParameterizedTest in JSON. -->
+        <dependency>
+            <groupId> net.joshka </groupId>
+            <artifactId> junit-json-params </artifactId>
+            <version> ${junit-json-params.version} </version>
+            <scope> test </scope>
+        </dependency>
+
+        <!--[Spring Test DBUnit Library]-->
+        <!--A library that uses DBUnit in Spring. -->
+        <dependency>
+            <groupId> com.github.springtestdbunit </groupId>
+            <artifactId> spring-test-dbunit </artifactId>
+            <version> ${spring-test-dbunit.version} </version>
+            <scope> test </scope>
+        </dependency>
+
+        <!--[DBUnit Library]-->
+        <!--Used to put test data in the DB in the test. -->
+        <dependency>
+            <groupId> org.dbunit </groupId>
+            <artifactId> dbunit </artifactId>
+            <version> ${dbunit.version} </version>
+            <scope> test </scope>
+        </dependency>
+
+        <!--[Awaitility Library]-->
+        <!--A library for easy testing of asynchronous processing. -->
+        <dependency>
+            <groupId> org.awaitility </groupId>
+            <artifactId> awaitility </artifactId>
+            <scope> test </scope>
+        </dependency>
+        <!--============================================== ===========-->
+
+        <!--Utility ============================================- -->
+        <!--[Lombok Library]-->
+        <!--Used to eliminate the description such as Getter / Setter and use the mechanism that automatically generates at build time only with annotations. -->
+        <dependency>
+            <groupId> org.projectlombok </groupId>
+            <artifactId> lombok </artifactId>
+            <optional> true </optional> <!--Do not package in jar / war as it is only needed when compiling-->
+        </dependency>
+
+        <!--[Java Bean Validation Extension Library]-->
+        <!--You will be able to validate IP addresses, etc. -->
+        <!--Validation details: https://github.com/nomemory/java-bean-validation-extension-->
+        <dependency>
+            <groupId> net.andreinc.jbvext </groupId>
+            <artifactId> jbvext </artifactId>
+            <version> ${jbvext.version} </version>
+        </dependency>
+
+        <!--[MapStruct Library]-->
+        <!--A library that helps convert Entity (or Domain) to DTO. -->
+        <dependency>
+            <groupId> org.mapstruct </groupId>
+            <artifactId> mapstruct </artifactId>
+            <version> ${mapstruct.version} </version>
+        </dependency>
+        <dependency>
+            <groupId> org.mapstruct </groupId>
+            <artifactId> mapstruct-processor </artifactId>
+            <version> ${mapstruct.version} </version>
+            <scope> provided </scope> <!--It is written to run at compile time-->
+        </dependency>
+
+        <!--[Guava Library]-->
+        <!--A convenient library made by Google. -->
+        <dependency>
+            <groupId> com.google.guava </groupId>
+            <artifactId> guava </artifactId>
+            <version> ${guava.version} </version>
+        </dependency>
+
+        <!--[OrangeSignal CSV Library]-->
+        <!--See below for Japanese documentation. -->
+        <!--Http://orangesignal.github.io/orangesignal-csv/-->
+        <dependency>
+            <groupId> com.orangesignal </groupId>
+            <artifactId> orangesignal-csv </artifactId>
+            <version> ${orangesignal-csv.version} </version>
+        </dependency>
+
+        <!--[Libphonenumber library]-->
+        <!--Google phone number parser. -->
+        <!--How to use: http://t-miliya612.hatenablog.com/entry/2018/04/14/191318-->
+        <dependency>
+            <groupId> com.googlecode.libphonenumber </groupId>
+            <artifactId> libphonenumber </artifactId>
+            <version> ${libphonenumber.version} </version>
+        </dependency>
+
+        <!--[JasperReports Library]-->
+        <!--Library that enables form output-->
+        <dependency>
+            <groupId> net.sf.jasperreports </groupId>
+            <artifactId> jasperreports </artifactId>
+            <version> ${jasperreports.version} </version>
+        </dependency>
+
+        <!--[Jackson Datatype: JSR310 Library]-->
+        <!--Add-on module that supports Java 8 Date & Time API types. -->
+        <!--Used when receiving and returning a request as JSON in the controller layer. -->
+        <dependency>
+            <groupId> com.fasterxml.jackson.datatype </groupId>
+            <artifactId> jackson-datatype-jsr310 </artifactId>
+        </dependency>
+
+        <!--[Spotbugs annotation added]-->
+        <!--Enable @SuppressFBWarnings to suppress SpotBugs warnings. -->
+        <dependency>
+            <groupId> com.github.spotbugs </groupId>
+            <artifactId> spotbugs-annotations </artifactId>
+            <version> ${spotbugs-annotations.version} </version>
+            <scope> provided </scope>
+        </dependency>
+
+        <!--[Fastutil Library]-->
+        <!--Fast collection library. Especially the list of primitive types is faster. -->
+        <dependency>
+            <groupId> it.unimi.dsi </groupId>
+            <artifactId> fastutil </artifactId>
+            <version> ${fastutil.version} </version>
+        </dependency>
+
+        <!--[Apache Commons Text Library]-->
+        <!--A convenient utility library for working with Strings. -->
+        <dependency>
+            <groupId> org.apache.commons </groupId>
+            <artifactId> commons-text </artifactId>
+            <version> ${commons-text.version} </version>
+        </dependency>
+
+        <!--[Jansi Library]-->
+        <!--A library for displaying colors on the Windows console. -->
+        <dependency>
+            <groupId> org.fusesource.jansi </groupId>
+            <artifactId> jansi </artifactId>
+            <version> 1.18 </version>
+        </dependency>
+
+        <!--[Java Native Access Library]-->
+        <!--Library for accessing shared libraries (dll, so, etc.) written in C / C ++ from Java-->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.5.0</version>
+        </dependency>
+        <!--============================================== ===========-->
+
+        <!--DB related ============================================ ======-->
+        <!--[MySQL JDBC Driver Library]-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!--============================================== ===========-->
+
+        <!-- [Flywayライブラリ] -->
+        <!-- DBマイグレーションツール。DBのテーブル作成やデータ挿入を自動化とバージョン管理をしてくれる。 -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <!-- ========================================================= -->
+
+        <!--Springfox library set ===============================-->
+        <!--A library for creating WEB API specifications for applications created based on Spring. -->
+        <!--After starting the server, you can browse the online specifications at "/swagger-ui.html". -->
+
+        <!--[Springfox core library]-->
+        <!--Required library for Springfox. Be sure to put it in. -->
+        <dependency>
+            <groupId> io.springfox </groupId>
+            <artifactId> springfox-core </artifactId>
+            <version> ${springfox.version} </version>
+            <!--[Exclusion settings]-->
+            <exclusions>
+                <!--[Exclude Spring Plugin Core]-->
+                <!--Excluded because spring-plugin-core of Springfox is 1.2.0.RELEASE (as of Springfox3.0.0-SNAPSHOT). -->
+                <exclusion>
+                    <groupId> org.springframework.plugin </groupId>
+                    <artifactId> spring-plugin-core </artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--[Spring Plugin Core Library]-->
+        <!--Added the latest version of Spring Plugin Core excluded by Springfox above. -->
+        <dependency>
+            <groupId> org.springframework.plugin </groupId>
+            <artifactId> spring-plugin-core </artifactId>
+            <version> ${spring-plugin-core.version} </version>
+        </dependency>
+
+        <!--[Springfox Web MVC Library]-->
+        <!--Required to support Spring Web MVC. -->
+        <dependency>
+            <groupId> io.springfox </groupId>
+            <artifactId> springfox-spring-webmvc </artifactId>
+            <version> ${springfox.version} </version>
+        </dependency>
+
+        <!--[Springfox Data REST Library]-->
+        <!--Required to support Spring Data REST. -->
+        <dependency>
+            <groupId> io.springfox </groupId>
+            <artifactId> springfox-data-rest </artifactId>
+            <version> ${springfox.version} </version>
+        </dependency>
+
+        <!--[Springfox Swagger2 Library]-->
+        <!--A library that enables Swagger settings and generates Swagger-compliant JSON. -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
+            <!--Exclusion settings-->
+            <!--Excluding the following one, the reason why it was added as dependency is to delete the following warning log. -->
+            <!--Reference Issues: https://github.com/springfox/springfox/issues/2265-->
+            <!--Originally I excluded swagger-annotations, but I found that I didn't need to exclude them. -->
+            <!--Reference URL: https://doc.xiaominfo.com/en/format-exception.html-->
+            <exclusions>
+                <!--<exclusion> <groupId> io.swagger </groupId> <artifactId> swagger-annotations </artifactId>
+                  </exclusion>-->
+                <exclusion>
+                    <groupId> io.swagger </groupId>
+                    <artifactId> swagger-models </artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--[Springfox Swagger Annotations Library]-->
+        <!--Allow Swagger documentation to be used as annotations. -->
+        <!--<dependency> <groupId> io.swagger </groupId> <artifactId> swagger-annotations </artifactId>
+          <version> ${swagger.version} </version> </dependency>-->
+        <!--[Springfox Swagger Models Library]-->
+        <!--Enable document annotations for Swagger entities. -->
+        <dependency>
+            <groupId> io.swagger </groupId>
+            <artifactId> swagger-models </artifactId>
+            <version> ${swagger.version} </version>
+        </dependency>
+
+        <!--[Springfox Swagger UI Library]-->
+        <!--A library that generates Web API specifications from JSON generated by springfox-swagger2. -->
+        <dependency>
+            <groupId> io.springfox </groupId>
+            <artifactId> springfox-swagger-ui </artifactId>
+            <version> ${springfox.version} </version>
+        </dependency>
+
+        <!--[Springfox Bean Validators Library]-->
+        <!--Supports outputting the contents set by verification (@valid) as a document. -->
+        <dependency>
+            <groupId> io.springfox </groupId>
+            <artifactId> springfox-bean-validators </artifactId>
+            <version> ${springfox.version} </version>
+        </dependency>
+
+        <!--[JAXB API Library]-->
+        <!--A library for converting between XML and Java objects. -->
+        <!--Originally included as standard before Java 9, but became deprecated in Java 9 and removed in Java 11. -->
+        <!--The above Springfox library set 3.0.0-SNAPSHOT (latest on April 11, 2020) uses JAXB, and if you start the server with Java 11, it will crash, so get it from the outside. Put the following description in. -->
+        <dependency>
+            <groupId> javax.xml.bind </groupId>
+            <artifactId> jaxb-api </artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.2.6.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+        <!--=========================================================-->
+    </dependencies>
+
+    <!--Build settings-->
+    <build>
+        <plugins>
+            <!--[Spring Boot Maven Plugin Library]-->
+            <!--Build environment provided by Spring Boot. Required to do Maven build in Spring Boot environment. -->
+            <plugin>
+                <groupId> org.springframework.boot </groupId>
+                <artifactId> spring-boot-maven-plugin </artifactId>
+                <configuration>
+                    <executable> false </executable> <!--Set true to create a Fully Executable Jar with a bash script. Set to false if the execution environment is not Linux-->
+                </configuration>
+            </plugin>
+
+            <!--[Maven installation plugin library]-->
+            <!--If there is a local jar, register it in the local repository. This plugin is built into the Spring Boot Maven Plugin library and is not required unless otherwise configured. -->
+            <plugin>
+                <groupId> org.apache.maven.plugins </groupId>
+                <artifactId> maven-install-plugin </artifactId>
+                <!--Settings for local jar-->
+                <executions>
+                    <execution>
+                        <id> install-external-epctagcoder </id>
+                        <phase> clean </phase>
+                        <!--Added EPCtagCoder library-->
+                        <configuration>
+                            <file> ${epctagcoder.jar.path} </file>
+                            <repositoryLayout> default </repositoryLayout>
+                            <groupId> org.epctagcoder </groupId>
+                            <artifactId> epctagcoder </artifactId>
+                            <version> ${epctagcoder.version} </version>
+                            <packaging> jar </packaging>
+                            <generatePom> true </generatePom>
+                        </configuration>
+                        <goals>
+                            <goal> install-file </goal>
+                        </goals>
+                    </execution>
+                    <!--Added BCP Issue library-->
+                    <!--May not be used because it is a library for Android. Decide what to do as soon as the investigation is complete <execution> <id> install-external-bcpissuelibrary </id>
+                      <phase> clean </phase> <configuration> <file> ${bcpissuelibrary.jar.path} </file> <repositoryLayout> default </repositoryLayout>
+                      <groupId> jp.co.toshibatec.bcp.library </groupId> <artifactId> bcpissuelibrary </artifactId> <version> ${bcpissuelibrary.version} </version>
+                      <packaging> jar </packing> <generatePom> true </generatePom> </configuration> <goals> <goal> install-file </goal>
+                      </goals> </execution>-->
+                </executions>
+            </plugin>
+
+            <!--[Git Commit ID Plugin Library]-->
+            <!--You can embed git.properties inside the jar. -->
+            <plugin>
+                <groupId> pl.project13.maven </groupId>
+                <artifactId> git-commit-id-plugin </artifactId>
+                <configuration>
+                    <!--Get information without Git connection-->
+                    <offline> true </offline>
+                    <!--Change because the timezone is UTC by default-->
+                    <dateFormat> yyyy-MM-dd HH: mm: ssZ </dateFormat>
+                    <dateFormatTimeZone> JST </dateFormatTimeZone>
+                </configuration>
+            </plugin>
+
+            <!--[Delombok (Lombok Maven Plugin) Library]-->
+            <!--If you are using Lombok, you can actually generate code at build time. -->
+            <!--The main use is to convert the Lombok description to Java code and then add Getter / Setter etc. to JavaDoc when generating specifications with JavaDoc. -->
+            <!--● Execution command: mvn compile-->
+            <plugin>
+                <groupId> org.projectlombok </groupId>
+                <artifactId> lombok-maven-plugin </artifactId>
+                <version> ${delombok.version} </version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>delombok</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--Whether to add the output directory to the Maven build path-->
+                    <addOutputDirectory> false </addOutputDirectory>
+                    <!--Location that is the "source" for code generation at build time (usually under "src / main / java")-->
+                    <sourceDirectory> src / main / java </sourceDirectory>
+                    <!--Encoding settings-->
+                    <encoding> ${project.build.sourceEncoding} </encoding>
+                </configuration>
+            </plugin>
+
+            <!--[Maven Compiler Plugin Library]-->
+            <!--Use when you want to make additional settings at compile time. This plugin is built into the Spring Boot Maven Plugin library and is not required unless otherwise configured. -->
+            <plugin>
+                <groupId> org.apache.maven.plugins </groupId>
+                <artifactId> maven-compiler-plugin </artifactId>
+                <!--Settings-->
+                <configuration>
+                    <compilerArgs>
+                        <!--Perform uninspected check-->
+                        <arg>-Xlint:unchecked</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <!--[Maven Surefire Plugin Library]-->
+            <!--A library that outputs a report when testing with Maven. -->
+            <!--If the Spring Boot Maven Plugin is included, the report will be output even if this plugin itself is not set separately. -->
+            <!--However, when testing with Maven, JUnit does not garble characters, but mvn test garbles characters, so make additional settings to eliminate the cause (just garbled characters, Flyway etc. Characters registered in the DB are also garbled when reading the SQL file of → In other words, the test fails). -->
+            <!--The above happens because JUnit is started separately from the Maven execution process. Therefore, set all encodings as UTF-8 clearly in the plugin settings below. -->
+            <plugin>
+                <groupId> org.apache.maven.plugins </groupId>
+                <artifactId> maven-surefire-plugin </artifactId>
+                <configuration>
+                    <junitArtifactName> junit: junit </junitArtifactName>
+                    <!--Whether to use a class loader with built-in maven (or rather surefire)-->
+                    <!--It seems that there is a problem with true, and it is dealt with with false. See below. -->
+                    <!--https://stackoverflow.com/questions/53010200/maven-surefire-could-not-find-forkedbooter-class?noredirect=1&lq=1-->
+                    <useSystemClassLoader> false </useSystemClassLoader>
+                    <!--When certain tests complete, System.exit () may hang instead of exiting. The timeout for this hang is 30 seconds by default, but if it can be completed normally, 30 seconds is too short, so extend it. -->
+                    <!--If the forked VM crashes even if the above useSystemClassLoader is false, increase the number of seconds below (it seems that the branched JVM may crash if there is a very time-consuming test). -->
+                    <!--https://stackoverflow.com/questions/46831762/maven-build-and-maven-failsafe-plugin-the-forked-vm-terminated-without-properl-->
+                    <forkedProcessExitTimeoutInSeconds> 600 </forkedProcessExitTimeoutInSeconds>
+                    <!--Encoding of the source code under test. !! !! @ {argLine} is included so that the args set elsewhere will not be overwritten and erased! !! -->
+                    <!--See below for java.base/ ~ ALL-UNNAMED in add-opens. -->
+                    <!--Reference URL: https://docs.oracle.com/javase/jp/9/migrate/toc.htm-->
+                    <!--jdk.internal.misc: Used with Netty-->
+                    <!--java.base/java.nio: Used in Netty-->
+                    <argLine> @ {argLine} -Dfile.encoding = UTF-8 --add-opens
+                        java.base/jdk.internal.misc = ALL-UNNAMED --add-opens
+                        java.base/java.nio=ALL-UNNAMED </argLine>
+                    <!--Encoding of report output file (* -out.txt)-->
+                    <encoding> UTF-8 </encoding>
+                    <skipTests> false </skipTests> <!--True allows you to skip tests but is not recommended. If you don't want to test, specify it as a runtime argument (-Dmaven.test.skip = true)-->
+                </configuration>
+            </plugin>
+
+            <!--[JaCoCo Maven Plugin Library]-->
+            <!--The coverage file jacoco.exec is generated during the test. -->
+            <!--If you execute the "mvn jacoco: report" command while jacoco.exec is generated, the report of the html file will be output. -->
+            <plugin>
+                <groupId> org.jacoco </groupId>
+                <artifactId> jacoco-maven-plugin </artifactId>
+                <version> ${jacoco-maven-plugin.version} </version>
+                <executions>
+                    <!--Prepare a property that points to the JaCoCo runtime agent that can be passed to the application under test as a VM argument. -->
+                    <!--If argLine is set in maven-surefire-plugin, it will be overwritten on maven side, so-->
+                    <!--@ {argLine} to maven side. Example: "<argLine> @ {argLine} -your -extra -arguments </argLine>"-->
+                    <!--Reference URL: https://www.eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html-->
+                    <execution>
+                        <id> default-prepare-agent </id>
+                        <goals>
+                            <goal> prepare-agent </goal>
+                        </goals>
+                    </execution>
+                    <!--Create a code coverage report for testing a single project (output in multiple formats (HTML, XML, and CSV)). -->
+                    <execution>
+                        <id> default-report </id>
+                        <goals>
+                            <goal> report </goal>
+                        </goals>
+                    </execution>
+                    <!--Coverage measurement during testing-->
+                    <execution>
+                        <id> report </id>
+                        <phase> test </phase>
+                        <goals>
+                            <goal> report </goal>
+                        </goals>
+                    </execution>
+                    <!--Check if code coverage meets the conditions specified in rules. -->
+                    <execution>
+                        <id> default-check </id>
+                        <goals>
+                            <goal> check </goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--SpotBugs Maven Plugin Library-->
+            <plugin>
+                <groupId> com.github.spotbugs </groupId>
+                <artifactId> spotbugs-maven-plugin </artifactId>
+                <version> ${spotbugs-maven-plugin.version} </version>
+                <dependencies>
+                    <!--Specify the version of SpotBugs-->
+                    <dependency>
+                        <groupId> com.github.spotbugs </groupId>
+                        <artifactId> spotbugs </artifactId>
+                        <version> ${spotbugs.version} </version>
+                    </dependency>
+                </dependencies>
+                <!--SpotBugs settings-->
+                <configuration>
+                    <!--Analysis power setting-->
+                    <!--[Setting value] Default: Default value (more), more: Disable interprocedural analysis of reference class, skip when bytecode is long. Others are the same as max, max: maximum analysis, min: invalid analysis that also increases memory consumption)-->
+                    <!--Detailed URL: https://spotbugs.readthedocs.io/ja/latest/effort.html-->
+                    <effort> max </effort>
+                    <!--Threshold setting-->
+                    <threshold> Default </threshold>
+                    <!--Build error when a problem is found (true) / No (false)-->
+                    <failOnError> true </failOnError>
+                    <!--Encoding of target source-->
+                    <sourceEncoding> UTF-8 </sourceEncoding>
+                    <!--With or without XML report file output-->
+                    <xmlOutput> true </xmlOutput>
+                    <!--Specify XML report file output directory-->
+                    <xmlOutputDirectory> target / spotbugs </xmlOutputDirectory>
+                    <!--Exclusion filter file path-->
+                    <excludeFilterFile> spotbugs_exclude.xml </excludeFilterFile>
+                    <!--Extended Plugin List-->
+                    <!--Find Security Bugs Plugin Library-->
+                    <!--Extension library for finding security bugs in FindBugs (SpotBugs)-->
+                    <pluginList>${spotbugs.plugin.directory.path}/findsecbugs-plugin-1.10.1.jar,${spotbugs.plugin.directory.path}/bug-pattern-1.5.0.jar,${spotbugs.plugin.directory.path}/sb-contrib-7.4.7.jar</pluginList>
+                </configuration>
+                <!--Run SpotBugs-->
+                <executions>
+                    <execution>
+                        <id> spotbugs </id>
+                        <!--Execution phase-->
+                        <phase> test </phase>
+                        <goals>
+                            <goal> check </goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--[JavaDoc Library]-->
+            <!--A library that generates JavaDoc specifications based on JavaDoc format comments. -->
+            <!--● Execution command: mvn javadoc: javadoc-->
+            <plugin>
+                <groupId> org.apache.maven.plugins </groupId>
+                <artifactId> maven-javadoc-plugin </artifactId>
+                <!--Run-->
+                <executions>
+                    <!--Create a Javadoc jar-->
+                    <execution>
+                        <id> attach-javadocs </id>
+                        <goals>
+                            <goal> jar </goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!--Settings-->
+                <configuration>
+                    <defaultVersion> ${project.version} </defaultVersion>
+                    <!--Java version-->
+                    <source> ${java.version} </source>
+                    <!--Whether to include the author-->
+                    <author> true </author>
+                    <!--Source location for generating JavaDoc-->
+                    <!--Note: Since the source location is used together with the following Delombok library, specify the source generated by Delombok. -->
+                    <sourcepath>target/generated-sources/delombok</sourcepath>
+                    <!--Access level of classes to include in Javadoc-->
+                    <show> protected </show>
+                    <!--Input source code encoding-->
+                    <encoding> UTF-8 </encoding>
+                    <!--Output Javadoc encoding-->
+                    <docencoding>UTF-8</docencoding>
+                    <!--Output Encoding output to meta tag in Javadoc HTML-->
+                    <charset> UTF-8 </charset>
+                    <!--Javadoc check. Disable missing (disables strict checking for missing Javadoc comments or tags as it also covers documents output by Lombok). -->
+                    <doclint> all, -missing </doclint>
+                </configuration>
+            </plugin>
+
+            <!--[Library version control tool]-->
+            <!--A library for managing the version of the library in pom.xml. -->
+            <!--=== List of commands below ===-->
+            <!--- 1. Library version check (check all dependencies) No report-->
+            <!--● Execution command: mvn versions: display-dependency-updates-->
+            <!--Check the versions of all dependent jars. -->
+            <!--- 2. Library version check (check all dependencies) Report available-->
+            <!--● Execution command: mvn versions: dependency-updates-report-->
+            <!--Check the versions of all dependent jars. -->
+            <!--3. Check the latest version of Maven plugin-->
+            <!--● Execution command: mvn versions: display-plugin-updates-->
+            <!--4. Update the library version-->
+            <!--● Execution command: mvn versions: use-latest-releases-->
+            <!--Update the jar version to the latest version. -->
+            <!--. Apply updated content-->
+            <!--● Execution command: mvn versions: commit-->
+            <!--Delete the pom.xml backup "pom.xml.versionsBackup" updated in the above command and apply the update. -->
+            <!--. Discard the updated content-->
+            <!--● Execution command: mvn versions: revert-->
+            <!--Restore the pom.xml updated in the above command before the change (backup "pom.xml.versionsBackup" is applied). -->
+            <!--See the URL below for other commands. -->
+            <!--Https://www.mojohaus.org/versions-maven-plugin/plugin-info.html-->
+
+        </plugins>
+    </build>
+
+    <!--Report settings-->
+    <reporting>
+        <plugins>
+            <!--JaCoCo Report Settings-->
+            <plugin>
+                <groupId> org.jacoco </groupId>
+                <artifactId> jacoco-maven-plugin </artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <!--Select a non-aggregate report-->
+                            <report> report </report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <!--SpotBugs Report Settings-->
+            <plugin>
+                <groupId> com.github.spotbugs </groupId>
+                <artifactId> spotbugs-maven-plugin </artifactId>
+                <version> ${spotbugs-maven-plugin.version} </version>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
