@@ -58,9 +58,15 @@ public final class EndpointUri {
 
 
     // Master管理 ==========================================================================================================
-    /** BannerMst畫面API RootURL. */
-    public static final String TABLE_BANNER_API_ROOT          = TOP_ROOT
-                                                              + "master/banner";
+    /** 首頁BannerMaster畫面畫面API RootURL. */
+    public static final String TABLE_BANNER_API_ROOT                     = TOP_ROOT
+                                                                         + "master/banner";
+    /** 訊息類別管理Master畫面API RootURL. */
+    public static final String TABLE_INFORM_MANAGEMENT_API_ROOT          = TOP_ROOT
+                                                                         + "master/inform-management";
+    /** 通知消息Master畫面API RootURL. */
+    public static final String TABLE_INFORM_API_ROOT                     = TOP_ROOT
+                                                                         + "master/inform";
     // =======================================================================================================================
 
 

@@ -46,7 +46,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version 0.0.1-SNAPSHOT
  * @author  Zeng YanYun
  */
-@RequiredArgsConstructor    // Lombok automatically generates a constructor with arguments to set values ​​in required fields (final fields) (to inject final fields without @Autowired)
+@RequiredArgsConstructor    // Lombok automatically generates a constructor with arguments to set values in required fields (final fields) (to inject final fields without @Autowired)
 @ToString                   // Automatically generate toString with Lombok
 @RestControllerAdvice       // Perform cross-cutting processing across multiple controllers (to use as an exception handler class for Rest API)
 @ Slf4j                     // Automatically generate code that defines a logger in Lombok. Classes with this annotation can access the logger with a variable called "log"

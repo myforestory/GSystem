@@ -27,7 +27,7 @@ springboot:
     # Flywayの有効化(true)/無効化(false)（hibernateのddl-autoと同時に使わないこと！）
     enabled: true
     # ★重要：本番環境ではtrueにすること！ Flaywayによるcleanを行わないようにする（true=cleanを行わない、false=cleanを行う）
-    cleanDisabled: false
+    cleanDisabled: true
     # Flywayでマイグレーションを行う対象ディレクトリ
     locations:
       - classpath:db/{vendor}/migration/01_base/1_init/

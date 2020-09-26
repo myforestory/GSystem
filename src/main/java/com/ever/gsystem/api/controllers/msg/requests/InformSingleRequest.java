@@ -1,6 +1,6 @@
 package com.ever.gsystem.api.controllers.msg.requests;
 
-import com.ever.gsystem.api.domain.entities.MstBanner;
+import com.ever.gsystem.api.domain.entities.MstInform;
 import com.ever.gsystem.constants.api.ApiDocMsg;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.io.Serializable;
 
 /**
- * [單體]首頁BannerMaster畫面REQUEST MESSAGE.
+ * [單體]通知消息Master畫面REQUEST MESSAGE.
  *
  * @since   0.0.1-SNAPSHOT
  * @since   2020/09/23
@@ -27,13 +27,13 @@ import java.io.Serializable;
 @AllArgsConstructor         // Lombok automatically generates a constructor with arguments to set the values of all fields
 @Builder (toBuilder = true) // Automatically generate builder pattern with Lombok
 @ApiModel(description = ApiDocMsg.SINGLE_TAG +
-                        ApiDocMsg.API_BANNER_ROOT_MSG + ApiDocMsg.REQ_MSG) //For Swagger API documentation
-public class BannerSingleRequest implements Serializable {
+                        ApiDocMsg.API_INFORM_ROOT_MSG + ApiDocMsg.REQ_MSG) //For Swagger API documentation
+public class InformSingleRequest implements Serializable {
     /** Serial version UID (change value if this class changes). */
-    private static final long serialVersionUID = -3261714019247385250L;
+    private static final long serialVersionUID = -7971217819803383211L;
 
-    /** BannerMaster. */
+    /** InformMaster. */
     @Valid
     @ApiModelProperty(position = 1)
-    private MstBanner mstBanner;
+    private MstInform mstInform;
 }

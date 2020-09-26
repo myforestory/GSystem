@@ -1,7 +1,5 @@
 package com.ever.gsystem.api.controllers.msg.responses;
 
-import java.io.Serializable;
-import java.util.List;
 import com.ever.gsystem.api.domain.entities.MstBanner;
 import com.ever.gsystem.api.domain.entities.MstTableManagement;
 import com.ever.gsystem.constants.api.ApiDocMsg;
@@ -9,6 +7,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Value;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * [檢索用]首頁BannerMaster畫面RESPONSE MESSAGE.
@@ -18,7 +19,7 @@ import lombok.Value;
  * @version 0.0.1-SNAPSHOT
  * @author  Zeng YanYun
  */
-@Value                      // Lombok automatically generates a constructor with arguments to set getter / equals / hashCode / toString for all fields and values ​​for all fields
+@Value                      // Lombok automatically generates a constructor with arguments to set getter / equals / hashCode / toString for all fields and values for all fields
 @Builder (toBuilder = true) // Automatically generate builder pattern with Lombok
 @ApiModel(description = ApiDocMsg.FIND_TAG +
                         ApiDocMsg.API_BANNER_ROOT_MSG + ApiDocMsg.RES_MSG) //For Swagger API documentation

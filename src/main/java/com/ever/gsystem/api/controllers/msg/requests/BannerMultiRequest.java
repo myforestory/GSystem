@@ -1,8 +1,5 @@
 package com.ever.gsystem.api.controllers.msg.requests;
 
-import java.io.Serializable;
-import java.util.List;
-import javax.validation.Valid;
 import com.ever.gsystem.api.domain.entities.MstBanner;
 import com.ever.gsystem.constants.api.ApiDocMsg;
 import io.swagger.annotations.ApiModel;
@@ -13,8 +10,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import javax.validation.Valid;
+import java.io.Serializable;
+import java.util.List;
+
 /**
- * [負數]首頁BannerMaster畫面REQUEST MESSAGE.
+ * [複數]首頁BannerMaster畫面REQUEST MESSAGE.
  *
  * @since   0.0.1-SNAPSHOT
  * @since   2020/09/23
@@ -24,7 +25,7 @@ import lombok.experimental.Accessors;
 @Data                       // Lombok automatically generates getter / setter / equals / canEqual / hashCode / toString for all fields
 @Accessors (chain = true)   // Use Lombok to make setters for all fields method chains
 @NoArgsConstructor          // Lombok automatically generates default constructor
-@AllArgsConstructor         // Lombok automatically generates a constructor with arguments to set the values ​​of all fields
+@AllArgsConstructor         // Lombok automatically generates a constructor with arguments to set the values of all fields
 @Builder (toBuilder = true) // Automatically generate builder pattern with Lombok
 @ApiModel(description = ApiDocMsg.MULTI_TAG +
                         ApiDocMsg.API_BANNER_ROOT_MSG + ApiDocMsg.REQ_MSG) // For Swagger API documentation

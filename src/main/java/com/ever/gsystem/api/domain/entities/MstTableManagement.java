@@ -1,15 +1,5 @@
 package com.ever.gsystem.api.domain.entities;
 
-import java.io.Serializable;
-import java.util.List;
-import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import com.ever.gsystem.annotations.FiledOrder;
 import com.ever.gsystem.constants.api.ApiDocMsg;
 import io.swagger.annotations.ApiModel;
@@ -21,6 +11,10 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldNameConstants;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
 
 /**
  * Table操作管理Master. <br>
@@ -37,7 +31,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Accessors (chain = true)   // Use Lombok to make setters for all fields method chains
 @FieldNameConstants         // Constantize the variable name of the field with Lombok. You can statically access field names in [Class] .Fields. [Variable Name]. Example) "productNo" can be retrieved with MstItem.Fields.productNo.
 @NoArgsConstructor          // Lombok automatically generates default constructor
-@AllArgsConstructor         // Lombok automatically generates a constructor with arguments to set the values ​​of all fields
+@AllArgsConstructor         // Lombok automatically generates a constructor with arguments to set the values of all fields
 @Builder (toBuilder = true) // Automatically generate builder pattern with Lombok
 @EntityListeners(AuditingEntityListener.class) // Registration date and time and update date and time are automatically registered / updated in the DB
 @Entity                     // Specify as entity class in JPA

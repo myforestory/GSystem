@@ -13,21 +13,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldNameConstants;
-import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.sql.Blob;
 
 /**
- * BannerMaster.<br>
- * 首頁Banner管理新增刪除修改TABLE。<br>
+ * InformMaster.<br>
+ * 最新消息/訊息通知之TABLE。<br>
  *
  * @since   0.0.1-SNAPSHOT
  * @since   2020/09/23
@@ -43,45 +39,88 @@ import java.sql.Blob;
 @EntityListeners (AuditingEntityListener.class) // Registration date and time and update date and time are automatically registered / updated in the DB
 @Entity                     // Specify as entity class in JPA
 @ApiModel (description = ApiDocMsg.BANNER_NAME) // For Swagger API documentation
-public class MstBanner implements Serializable {
+public class MstInform implements Serializable {
     /** Serial version UID (change value if this class changes). */
-    private static final long serialVersionUID = 3215114886808058696L;
+    private static final long serialVersionUID = 8345256759805513717L;
 
     /**
-     * bannerID.
+     * informID.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     @Min(0)
     @Max(Long.MAX_VALUE)
-    @ApiModelProperty(value = "bannerID", position = 1)
-    private Long bannerId;
+    @ApiModelProperty(value = "informID", position = 1)
+    private Long informId;
 
     /**
-     * banner標題.
+     * informManagementID.
+     */
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
+    @Min(0)
+    @Max(Long.MAX_VALUE)
+    @ApiModelProperty(value = "informManagementID", position = 2)
+    private Long informManagementId;
+
+    /**
+     * 訊息類別種類.<br>
+     * 1.最新消息 2.訊息通知
      */
     @FiledOrder(2)
     @Column(nullable = false)
-    @NotBlank()
-    @Size(min = 1, max = 200)
-    @ApiModelProperty(value = "banner標題", position = 2)
-    private String name;
+    @NotNull
+    @Min(0)
+    @Max(2)
+    @ApiModelProperty(value = "訊息類別種類", position = 3)
+    private Byte inform_type;
 
     /**
-     * banner上傳圖片.
+     * 訊息名稱.
      */
     @FiledOrder(3)
     @Column(nullable = false)
-    @Lob
-    @ApiModelProperty(value = "banner上傳圖片", position = 3)
-    private Blob image;
+    @NotBlank()
+    @Size(min = 1, max = 200)
+    @ApiModelProperty(value = "訊息類別名稱", position = 3)
+    private String name;
 
-    /** banner上架時間. */
-    @FiledOrder(CmnFiledInfo.INSERT_TIME_POSITION)
-    @CreatedDate
-    @JsonFormat(pattern = EntityDateFormat.INSERT_TIME_FORMAT)
-    @DateTimeFormat(pattern = EntityDateFormat.INSERT_TIME_FORMAT)
-    @ApiModelProperty(value = ApiDocMsg.INSERT_TIME_NAME, example = ApiDocMsg.INSERT_TIME_EXAMPLE, position = CmnFiledInfo.INSERT_TIME_POSITION)
-    private java.util.Date uploadTime;
+    /**
+     * 訊息狀態.<br>
+     * 1.簡訊推播兩者 2.簡訊 3.推播
+     */
+    @FiledOrder(4)
+    @Min(0)
+    @Max(3)
+    @ApiModelProperty(value = "訊息狀態", position = 3)
+    private Byte status;
+
+    /**
+     * 訊息狀態.<br>
+     * 1.不顯示 2.顯示
+     */
+    @FiledOrder(5)
+    @Min(0)
+    @Max(2)
+    @ApiModelProperty(value = "訊息狀態", position = 5)
+    private Byte pupUp;
+
+    /**
+     * 推播內容.
+     */
+    @FiledOrder(6)
+    @Column(nullable = false)
+    @NotBlank()
+    @Size(min = 1, max = 10000)
+    @ApiModelProperty(value = "推播內容", position = 6)
+    private String text;
+
+    /** 發送時間. */
+    @FiledOrder(CmnFiledInfo.UPDATE_TIME_POSITION)
+    @LastModifiedDate
+    @JsonFormat(pattern = EntityDateFormat.UPDATE_TIME_FORMAT)
+    @DateTimeFormat(pattern = EntityDateFormat.UPDATE_TIME_FORMAT)
+    @ApiModelProperty(value = ApiDocMsg.UPDATE_TIME_NAME, example = ApiDocMsg.UPDATE_TIME_EXAMPLE, position = CmnFiledInfo.UPDATE_TIME_POSITION)
+    private java.util.Date podcastTime;
 }

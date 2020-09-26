@@ -20,7 +20,7 @@ import lombok.Value;
  * @version 0.0.1-SNAPSHOT
  * @author  Zeng YanYun
  */
-@Value                      // Lombok automatically generates a constructor with arguments to set getter / equals / hashCode / toString for all fields and values ​​for all fields
+@Value                      // Lombok automatically generates a constructor with arguments to set getter / equals / hashCode / toString for all fields and values for all fields
 @Builder (toBuilder = true) // Automatically generate builder pattern with Lombok
 @ApiModel(description = "エラーレスポンスメッセージ") //For Swagger API documentation
 public class ErrorResponse implements Serializable {

@@ -2,9 +2,6 @@ package com.ever.gsystem.api.domain.entities;
 
 import com.ever.gsystem.annotations.FiledOrder;
 import com.ever.gsystem.constants.api.ApiDocMsg;
-import com.ever.gsystem.constants.api.CmnFiledInfo;
-import com.ever.gsystem.constants.api.EntityDateFormat;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -13,21 +10,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldNameConstants;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.sql.Blob;
 
 /**
- * BannerMaster.<br>
- * 首頁Banner管理新增刪除修改TABLE。<br>
+ * InformManagementMaster.<br>
+ * 最新消息/訊息通知之類別管理TABLE。<br>
  *
  * @since   0.0.1-SNAPSHOT
  * @since   2020/09/23
@@ -42,46 +33,57 @@ import java.sql.Blob;
 @Builder (toBuilder = true) // Automatically generate builder pattern with Lombok
 @EntityListeners (AuditingEntityListener.class) // Registration date and time and update date and time are automatically registered / updated in the DB
 @Entity                     // Specify as entity class in JPA
+@IdClass(MstInformManagement.PrimaryKeys.class)  // Define a dedicated class because there are multiple primary keys
 @ApiModel (description = ApiDocMsg.BANNER_NAME) // For Swagger API documentation
-public class MstBanner implements Serializable {
+public class MstInformManagement implements Serializable {
     /** Serial version UID (change value if this class changes). */
-    private static final long serialVersionUID = 3215114886808058696L;
+    private static final long serialVersionUID = 2515522551076359199L;
 
     /**
-     * bannerID.
+     * PRIMARY KEY.
+     */
+    @Data
+    public static class PrimaryKeys implements Serializable {
+        /** Serial version UID (change value if this class changes). */
+        private static final long serialVersionUID = 4994237165603294818L;
+
+        /** informManagementID. */
+        private Long informManagementId;
+        /** 訊息類別種類. */
+        private Byte inform_type;
+    }
+
+    /**
+     * informManagementID.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     @Min(0)
     @Max(Long.MAX_VALUE)
-    @ApiModelProperty(value = "bannerID", position = 1)
-    private Long bannerId;
+    @ApiModelProperty(value = "informManagementID", position = 1)
+    private Long informManagementId;
 
     /**
-     * banner標題.
+     * 訊息類別種類.<br>
+     * 1.最新消息 2.訊息通知
      */
+    @Id
     @FiledOrder(2)
     @Column(nullable = false)
-    @NotBlank()
-    @Size(min = 1, max = 200)
-    @ApiModelProperty(value = "banner標題", position = 2)
-    private String name;
+    @NotNull
+    @Min(0)
+    @Max(2)
+    @ApiModelProperty(value = "訊息類別種類", position = 2)
+    private Byte inform_type;
 
     /**
-     * banner上傳圖片.
+     * 訊息類別名稱.
      */
     @FiledOrder(3)
     @Column(nullable = false)
-    @Lob
-    @ApiModelProperty(value = "banner上傳圖片", position = 3)
-    private Blob image;
-
-    /** banner上架時間. */
-    @FiledOrder(CmnFiledInfo.INSERT_TIME_POSITION)
-    @CreatedDate
-    @JsonFormat(pattern = EntityDateFormat.INSERT_TIME_FORMAT)
-    @DateTimeFormat(pattern = EntityDateFormat.INSERT_TIME_FORMAT)
-    @ApiModelProperty(value = ApiDocMsg.INSERT_TIME_NAME, example = ApiDocMsg.INSERT_TIME_EXAMPLE, position = CmnFiledInfo.INSERT_TIME_POSITION)
-    private java.util.Date uploadTime;
+    @NotBlank()
+    @Size(min = 1, max = 200)
+    @ApiModelProperty(value = "訊息類別名稱", position = 3)
+    private String name;
 }
