@@ -23,7 +23,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.sql.Blob;
 
 /**
  * BannerMaster.<br>
@@ -50,8 +49,9 @@ public class MstBanner implements Serializable {
     /**
      * bannerID.
      */
+    @FiledOrder(1)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(nullable = false)
     @Min(0)
     @Max(Long.MAX_VALUE)
@@ -75,13 +75,21 @@ public class MstBanner implements Serializable {
     @Column(nullable = false)
     @Lob
     @ApiModelProperty(value = "banner上傳圖片", position = 3)
-    private Blob image;
+    private byte[] image;
 
     /** banner上架時間. */
-    @FiledOrder(CmnFiledInfo.INSERT_TIME_POSITION)
+    @FiledOrder(CmnFiledInfo.UPLOAD_TIME_POSITION)
     @CreatedDate
-    @JsonFormat(pattern = EntityDateFormat.INSERT_TIME_FORMAT)
+    @JsonFormat(pattern = EntityDateFormat.UPLOAD_TIME_FORMAT)
     @DateTimeFormat(pattern = EntityDateFormat.INSERT_TIME_FORMAT)
-    @ApiModelProperty(value = ApiDocMsg.INSERT_TIME_NAME, example = ApiDocMsg.INSERT_TIME_EXAMPLE, position = CmnFiledInfo.INSERT_TIME_POSITION)
+    @ApiModelProperty(value = ApiDocMsg.UPLOAD_TIME_NAME, example = ApiDocMsg.UPLOAD_TIME_EXAMPLE, position = CmnFiledInfo.UPLOAD_TIME_POSITION)
     private java.util.Date uploadTime;
+
+    /** banner下架時間. */
+    @FiledOrder(CmnFiledInfo.REMOVE_TIME_POSITION)
+    @CreatedDate
+    @JsonFormat(pattern = EntityDateFormat.REMOVE_TIME_FORMAT)
+    @DateTimeFormat(pattern = EntityDateFormat.REMOVE_TIME_FORMAT)
+    @ApiModelProperty(value = ApiDocMsg.REMOVE_TIME_NAME, example = ApiDocMsg.REMOVE_TIME_EXAMPLE, position = CmnFiledInfo.REMOVE_TIME_POSITION)
+    private java.util.Date removeTime;
 }

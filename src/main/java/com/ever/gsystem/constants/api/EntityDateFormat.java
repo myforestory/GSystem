@@ -3,28 +3,29 @@ package com.ever.gsystem.constants.api;
 import lombok.experimental.UtilityClass;
 
 /**
- * エンティティの日付定数クラス.
+ * Entity date constant class.
  * <p>
- * 日時系の定数を定義する。<br>
- * {@link com.plus_automation.api.domain.entities}の他、<br>
- * {@link com.plus_automation.api.app.controllers.msg.requests}で使用する。<br>
+ * Define date and time constants。<br>
+ * {@link com.ever.gsystem.api.domain.entities}<br>
  * </p>
  *
  * @since   0.0.1-SNAPSHOT
- * @since   2019/10/03
+ * @since   2020/09/23
  * @version 0.0.1-SNAPSHOT
- * @author  Hiroshi Takano
+ * @author  Zeng YanYun
  */
-@UtilityClass   // Lombokでインスタンスの生成をできないようにする
+@UtilityClass   // Prevent Lombok from being instantiated.
 public final class EntityDateFormat {
-    /** 汎用日時の日付フォーマット */
+    /** 泛用日期時間FORMAT */
     public static final String COMMON_TIME_FORMAT       = "yyyy-MM-dd HH:mm:ss";
-    /** 登録日時の日付フォーマット */
+    /** 新增日期時間FORMAT */
     public static final String INSERT_TIME_FORMAT       = "yyyy-MM-dd HH:mm:ss";
-    /** 更新日時の日付フォーマット */
+    /** 更新日期時間FORMAT */
     public static final String UPDATE_TIME_FORMAT       = "yyyy-MM-dd HH:mm:ss";
-    /** 履歴登録日時の日付フォーマット */
-    public static final String HST_INSERT_TIME_FORMAT   = "yyyy-MM-dd HH:mm:ss";
-    /** エラーレスポンス返却用日付フォーマット */
+    /** 上架日期時間FORMAT */
+    public static final String UPLOAD_TIME_FORMAT       = "yyyy-MM-dd HH:mm:ss";
+    /** 下架日期時間FORMAT */
+    public static final String REMOVE_TIME_FORMAT       = "yyyy-MM-dd HH:mm:ss";
+    /** ERROR RESPONSE返回用FORMAT */
     public static final String ERR_RESPONSE_TIME_FORMAT = "yyyy-MM-dd hh:mm:ss.SSS";
 }

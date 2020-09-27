@@ -34,10 +34,11 @@ import java.io.Serializable;
 @EntityListeners (AuditingEntityListener.class) // Registration date and time and update date and time are automatically registered / updated in the DB
 @Entity                     // Specify as entity class in JPA
 @IdClass(MstInformManagement.PrimaryKeys.class)  // Define a dedicated class because there are multiple primary keys
-@ApiModel (description = ApiDocMsg.BANNER_NAME) // For Swagger API documentation
+@ApiModel (description = ApiDocMsg.API_INFORM_MANAGEMENT_ROOT_MSG) // For Swagger API documentation
 public class MstInformManagement implements Serializable {
     /** Serial version UID (change value if this class changes). */
     private static final long serialVersionUID = 2515522551076359199L;
+
 
     /**
      * PRIMARY KEY.
@@ -50,15 +51,16 @@ public class MstInformManagement implements Serializable {
         /** informManagementID. */
         private Long informManagementId;
         /** 訊息類別種類. */
-        private Byte inform_type;
+        private Byte informType;
     }
 
     /**
      * informManagementID.
      */
+    @FiledOrder(1)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
+    @NotNull
     @Min(0)
     @Max(Long.MAX_VALUE)
     @ApiModelProperty(value = "informManagementID", position = 1)
@@ -68,14 +70,14 @@ public class MstInformManagement implements Serializable {
      * 訊息類別種類.<br>
      * 1.最新消息 2.訊息通知
      */
-    @Id
     @FiledOrder(2)
+    @Id
     @Column(nullable = false)
     @NotNull
     @Min(0)
     @Max(2)
     @ApiModelProperty(value = "訊息類別種類", position = 2)
-    private Byte inform_type;
+    private Byte informType;
 
     /**
      * 訊息類別名稱.

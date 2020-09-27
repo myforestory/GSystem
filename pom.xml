@@ -455,6 +455,16 @@
             <!--[Spring Boot Maven Plugin Library]-->
             <!--Build environment provided by Spring Boot. Required to do Maven build in Spring Boot environment. -->
             <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <!--	configuration配置 url,user,password不然plugin无法正常使用			-->
+                <configuration>
+                    <url>jdbc:mysql://localhost:3307/gsystem</url>
+                    <user>root</user>
+                    <password>dev</password>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId> org.springframework.boot </groupId>
                 <artifactId> spring-boot-maven-plugin </artifactId>
                 <configuration>

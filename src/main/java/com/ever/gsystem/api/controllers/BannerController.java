@@ -23,6 +23,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Objects;
 
@@ -90,8 +91,9 @@ public class BannerController {
     /**
      * 新增API.
      *
-     * @param  req 首頁BannerMst畫面REQUEST
-     * @return     首頁BannerMst畫面RESPONSE
+     * @param  reqFile   首頁BannerMst畫面REQUEST(image)
+     * @param  reqBanner 首頁BannerMst畫面REQUEST(name, uploadTime, removeTime)
+     * @return           首頁BannerMst畫面RESPONSE
      */
     @PostMapping
     @ApiOperation(value = ApiDocMsg.POST_TITLE_MSG, notes = ApiDocMsg.BANNER_NAME +
@@ -99,20 +101,21 @@ public class BannerController {
     @ApiResponses({@ApiResponse(code = 200, message = ApiDocMsg.POST_RES_200_MSG, response = Object.class),
             @ApiResponse(code = 201, message = ApiDocMsg.POST_RES_201_MSG, response = BannerSingleResponse.class),
             @ApiResponse(code = 400, message = ApiDocMsg.POST_RES_400_MSG, response = ErrorResponse.class)}) // For Swagger API documentation
-    public ResponseEntity<BannerSingleResponse> postBanner(@Validated @RequestBody final BannerSingleRequest req) {
-        log.info("→Request：{}", StringUtils.replace(Objects.toString(req, "null"),
+    public ResponseEntity<BannerSingleResponse> postBanner(@RequestParam("file") final MultipartFile reqFile, @Validated BannerSingleRequest reqBanner) {
+        log.info("→Request：{}", StringUtils.replace(Objects.toString(reqBanner, "null"),
                 "[\r\n]", ""));
-        final ResponseEntity<BannerSingleResponse> res = new ResponseEntity<>(this.service.save(req),
+        final ResponseEntity<BannerSingleResponse> res = new ResponseEntity<>(this.service.save(reqFile, reqBanner),
                 HttpStatus.CREATED);
         log.info("←Response：{}", res);
-        return res;
+        return null;
     }
 
     /**
      * 更新API.
      *
-     * @param  req 首頁BannerMst畫面REQUEST
-     * @return     首頁BannerMst畫面RESPONSE
+     * @param  reqFile   首頁BannerMst畫面REQUEST(image)
+     * @param  reqBanner 首頁BannerMst畫面REQUEST(name, uploadTime, removeTime)
+     * @return           首頁BannerMst畫面RESPONSE
      */
     @PutMapping
     @ApiOperation(value = ApiDocMsg.PUT_TITLE_MSG, notes = ApiDocMsg.BANNER_NAME +
@@ -120,10 +123,10 @@ public class BannerController {
     @ApiResponses({@ApiResponse(code = 200, message = ApiDocMsg.PUT_RES_200_MSG, response = Object.class),
             @ApiResponse(code = 201, message = ApiDocMsg.PUT_RES_201_MSG, response = BannerSingleResponse.class),
             @ApiResponse(code = 400, message = ApiDocMsg.PUT_RES_400_MSG, response = ErrorResponse.class)}) // For Swagger API documentation
-    public ResponseEntity<BannerSingleResponse> putBanner(@Validated @RequestBody final BannerSingleRequest req) {
-        log.info("→Request：{}", StringUtils.replace(Objects.toString(req, "null"),
+    public ResponseEntity<BannerSingleResponse> putBanner(@RequestParam("file") final MultipartFile reqFile, @Validated BannerSingleRequest reqBanner) {
+        log.info("→Request：{}", StringUtils.replace(Objects.toString(reqBanner, "null"),
                 "[\r\n]", ""));
-        final ResponseEntity<BannerSingleResponse> res = new ResponseEntity<>(this.service.save(req),
+        final ResponseEntity<BannerSingleResponse> res = new ResponseEntity<>(this.service.save(reqFile, reqBanner),
                 HttpStatus.CREATED);
         log.info("←Response：{}", res);
         return res;

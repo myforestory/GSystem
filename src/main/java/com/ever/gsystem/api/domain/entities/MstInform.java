@@ -38,7 +38,7 @@ import java.io.Serializable;
 @Builder (toBuilder = true) // Automatically generate builder pattern with Lombok
 @EntityListeners (AuditingEntityListener.class) // Registration date and time and update date and time are automatically registered / updated in the DB
 @Entity                     // Specify as entity class in JPA
-@ApiModel (description = ApiDocMsg.BANNER_NAME) // For Swagger API documentation
+@ApiModel (description = ApiDocMsg.API_INFORM_ROOT_MSG) // For Swagger API documentation
 public class MstInform implements Serializable {
     /** Serial version UID (change value if this class changes). */
     private static final long serialVersionUID = 8345256759805513717L;
@@ -46,8 +46,8 @@ public class MstInform implements Serializable {
     /**
      * informID.
      */
+    @FiledOrder(1)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     @Min(0)
     @Max(Long.MAX_VALUE)
@@ -57,8 +57,9 @@ public class MstInform implements Serializable {
     /**
      * informManagementID.
      */
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @FiledOrder(2)
     @Column(nullable = false)
+    @NotNull
     @Min(0)
     @Max(Long.MAX_VALUE)
     @ApiModelProperty(value = "informManagementID", position = 2)
@@ -68,52 +69,52 @@ public class MstInform implements Serializable {
      * 訊息類別種類.<br>
      * 1.最新消息 2.訊息通知
      */
-    @FiledOrder(2)
+    @FiledOrder(3)
     @Column(nullable = false)
     @NotNull
     @Min(0)
     @Max(2)
     @ApiModelProperty(value = "訊息類別種類", position = 3)
-    private Byte inform_type;
+    private Byte informType;
 
     /**
      * 訊息名稱.
      */
-    @FiledOrder(3)
+    @FiledOrder(4)
     @Column(nullable = false)
     @NotBlank()
     @Size(min = 1, max = 200)
-    @ApiModelProperty(value = "訊息類別名稱", position = 3)
+    @ApiModelProperty(value = "訊息類別名稱", position = 4)
     private String name;
 
     /**
      * 訊息狀態.<br>
      * 1.簡訊推播兩者 2.簡訊 3.推播
      */
-    @FiledOrder(4)
+    @FiledOrder(5)
     @Min(0)
     @Max(3)
-    @ApiModelProperty(value = "訊息狀態", position = 3)
+    @ApiModelProperty(value = "訊息狀態", position = 5)
     private Byte status;
 
     /**
-     * 訊息狀態.<br>
+     * 首頁彈跳視窗.<br>
      * 1.不顯示 2.顯示
      */
-    @FiledOrder(5)
+    @FiledOrder(6)
     @Min(0)
     @Max(2)
-    @ApiModelProperty(value = "訊息狀態", position = 5)
-    private Byte pupUp;
+    @ApiModelProperty(value = "首頁彈跳視窗", position = 6)
+    private Byte popup;
 
     /**
      * 推播內容.
      */
-    @FiledOrder(6)
+    @FiledOrder(7)
     @Column(nullable = false)
     @NotBlank()
     @Size(min = 1, max = 10000)
-    @ApiModelProperty(value = "推播內容", position = 6)
+    @ApiModelProperty(value = "推播內容", position = 7)
     private String text;
 
     /** 發送時間. */

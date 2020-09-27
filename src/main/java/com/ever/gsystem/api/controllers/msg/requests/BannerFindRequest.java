@@ -1,18 +1,11 @@
 package com.ever.gsystem.api.controllers.msg.requests;
 
-import java.io.Serializable;
-import java.sql.Blob;
-import java.util.List;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
-import org.springframework.format.annotation.DateTimeFormat;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ever.gsystem.annotations.FiledOrder;
 import com.ever.gsystem.constants.api.ApiDocMsg;
 import com.ever.gsystem.constants.api.CmnFiledInfo;
 import com.ever.gsystem.constants.api.EntityDateFormat;
 import com.ever.gsystem.constants.api.GetRequestLimit;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -20,6 +13,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * [檢索用]首頁BannerMaster畫面REQUEST MESSAGE.
@@ -60,20 +60,20 @@ public class BannerFindRequest implements Serializable {
     @FiledOrder(3)
     @Size(min = GetRequestLimit.LIMIT_MAX, max = GetRequestLimit.LIMIT_MIN)
     @ApiModelProperty(value = "banner上傳圖片", position = 3)
-    private Blob image;
+    private byte[] image;
 
     /** banner上架時間. */
-    @FiledOrder(CmnFiledInfo.INSERT_TIME_POSITION)
-    @JsonFormat(pattern = EntityDateFormat.INSERT_TIME_FORMAT)
+    @FiledOrder(CmnFiledInfo.UPLOAD_TIME_POSITION)
+    @JsonFormat(pattern = EntityDateFormat.UPLOAD_TIME_FORMAT)
     @DateTimeFormat(pattern = EntityDateFormat.INSERT_TIME_FORMAT)
-    @ApiModelProperty(value = ApiDocMsg.INSERT_TIME_NAME, example = ApiDocMsg.INSERT_TIME_EXAMPLE, position = CmnFiledInfo.INSERT_TIME_POSITION)
+    @ApiModelProperty(value = ApiDocMsg.UPLOAD_TIME_NAME, example = ApiDocMsg.UPLOAD_TIME_EXAMPLE, position = CmnFiledInfo.UPLOAD_TIME_POSITION)
     private List<java.util.Date> uploadTime;
 
     /** banner下架時間. */
-    @FiledOrder(CmnFiledInfo.UPDATE_TIME_POSITION)
-    @JsonFormat(pattern = EntityDateFormat.UPDATE_TIME_FORMAT)
-    @DateTimeFormat(pattern = EntityDateFormat.UPDATE_TIME_FORMAT)
-    @ApiModelProperty(value = ApiDocMsg.UPDATE_TIME_NAME, example = ApiDocMsg.UPDATE_TIME_EXAMPLE, position = CmnFiledInfo.UPDATE_TIME_POSITION)
+    @FiledOrder(CmnFiledInfo.REMOVE_TIME_POSITION)
+    @JsonFormat(pattern = EntityDateFormat.REMOVE_TIME_FORMAT)
+    @DateTimeFormat(pattern = EntityDateFormat.REMOVE_TIME_FORMAT)
+    @ApiModelProperty(value = ApiDocMsg.REMOVE_TIME_NAME, example = ApiDocMsg.REMOVE_TIME_EXAMPLE, position = CmnFiledInfo.REMOVE_TIME_POSITION)
     private List<java.util.Date> removeTime;
     // =================================================================================
 

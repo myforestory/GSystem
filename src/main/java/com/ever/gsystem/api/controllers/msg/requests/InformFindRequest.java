@@ -68,9 +68,14 @@ public class InformFindRequest implements Serializable {
     @ApiModelProperty(value = "訊息狀態", position = 5)
     private List<@Min(GetRequestLimit.LIST_MIN) @Max(GetRequestLimit.LIST_MAX) Integer> status;
 
-    /** 推播內容. */
+    /** 首頁彈跳視窗. */
     @FiledOrder(6)
-    @ApiModelProperty(value = "推播內容", position = 6)
+    @ApiModelProperty(value = "首頁彈跳視窗", position = 6)
+    private List<@Min(GetRequestLimit.LIST_MIN) @Max(GetRequestLimit.LIST_MAX) Integer> popup;
+
+    /** 推播內容. */
+    @FiledOrder(7)
+    @ApiModelProperty(value = "推播內容", position = 7)
     private List<@Min(GetRequestLimit.LIST_MIN) @Max(GetRequestLimit.LIST_MAX) Integer> text;
 
     // =================================================================================

@@ -11,9 +11,12 @@ import com.ever.gsystem.api.domain.repositories.jpa.MstBannerRepository;
 import com.ever.gsystem.api.domain.repositories.mabatis.MstBannerRepositoryMybatis;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +31,7 @@ import java.util.List;
 @RequiredArgsConstructor    // Automatically generate a constructor with arguments to set values in required fields (final fields) in Lombok
 @ToString                   // Automatically generate toString with Lombok
 @Service                    // Make it a service layer class in Spring MVC
+@Slf4j
 public class BannerService {
     /** BannerMaster Repository（Mybatis）. */
     final private MstBannerRepositoryMybatis<BannerFindRequest> mstBannerRepositoryMyb;
@@ -82,14 +86,23 @@ public class BannerService {
      * <li>{@link MstBanner BannerMaster}對Table中的一筆資料進行更新。</li>
      * </ol>
      *
-     * @param  req RequestMessage
-     * @return     ResponseMessage
+     * @param  reqFile   首頁BannerMst畫面REQUEST(image)
+     * @param  reqBanner 首頁BannerMst畫面REQUEST(name, uploadTime, removeTime)
+     * @return           ResponseMessage
      */
     @Transactional
-    public BannerSingleResponse save(final BannerSingleRequest req) {
+    public BannerSingleResponse save(final MultipartFile reqFile, final BannerSingleRequest reqBanner) {
+        if (reqFile.getSize() == 0 || !reqFile.getContentType().contains("image")) {
+            // 0 byte file uploaded or file type is not image
+            log.debug("0 byte file uploaded or file type is not image");
+            return BannerSingleResponse.builder().build();
+        }
+
+        final MstBanner banner = createMstBanner(reqFile, reqBanner);
+
         // 更新＆Response做成
         final BannerSingleResponse res = BannerSingleResponse.builder()
-                .mstBanner(this.mstBannerRepository.save(req.getMstBanner()))  // BannerMaster中一筆資料更新
+                .mstBanner(this.mstBannerRepository.save(banner))  // BannerMaster中一筆資料更新
                 .build();
         this.mstBannerRepository.flush();
         return res;
@@ -107,5 +120,20 @@ public class BannerService {
     public void delete(final BannerMultiRequest req) {
         // 刪除
         this.mstBannerRepository.deleteInBatch(req.getMstBanner());
+    }
+
+    private MstBanner createMstBanner(final MultipartFile reqFile, final BannerSingleRequest reqBanner) {
+        final MstBanner banner = new MstBanner();
+
+        try {
+            banner.setImage(reqFile.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        banner.setName(reqBanner.getName());
+        banner.setUploadTime(reqBanner.getUploadTime());
+        banner.setRemoveTime(reqBanner.getRemoveTime());
+
+        return banner;
     }
 }

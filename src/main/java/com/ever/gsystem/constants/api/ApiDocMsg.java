@@ -35,7 +35,7 @@ public final class ApiDocMsg {
     public static final String POST_NOTES_CMN_MSG       = "已登錄。";
     /** POST NOTE MESSAGE（TABLE 管理）. */
     public static final String POST_NOTES_CMN_TABLE_MSG = "已登錄。<br>"
-                                                          + "登録日時、更新日時は SERVER側で自動登録される。";
+                                                          + "登録日期時間、更新日期時間は SERVER側で自動登録される。";
     /** POST200 RESPONSE MESSAGE. */
     public static final String POST_RES_200_MSG         = "無";
     /** POST201 RESPONSE MESSAGE. */
@@ -51,8 +51,8 @@ public final class ApiDocMsg {
     public static final String PUT_NOTES_CMN_MSG       = "已更新";
     /** PUT NOTE MESSAGE（TABLE 管理）. */
     public static final String PUT_NOTES_CMN_TABLE_MSG = "已更新<br>"
-                                                         + "登録日時は検索した値そのままを設定すること。<br>"
-                                                         + "更新日時は何でも良い。 SERVER側で現在時刻へ自動更新する。";
+                                                         + "登録日期時間は検索した値そのままを設定すること。<br>"
+                                                         + "更新日期時間は何でも良い。 SERVER側で現在時刻へ自動更新する。";
     /** PUT200 RESPONSE MESSAGE. */
     public static final String PUT_RES_200_MSG         = "無";
     /** PUT201 RESPONSE MESSAGE. */
@@ -141,20 +141,24 @@ public final class ApiDocMsg {
     /**  TABLEインポート/エクスポートルートURL説明. */
     public static final String TABLE_IE_ROOT_INFO = "<br>{mappingNo}部分には、以下が入る。<ol><li>ie-item（商品MASTERインポート/エクスポート）</li><li>ie-chute（シュートMASTERインポート/エクスポート）</li><li>ie-shop（店舗MASTERインポート/エクスポート）</li><li>ie-batch（バッチインポート/エクスポート）</li><li>ie-task（タスクインポート/エクスポート）</li><li>ie-taskhst（タスク履歴インポート/エクスポート）</li><li>ie-device（デバイスMASTERインポート/エクスポート）</li></ol>";
 
-    /** 汎用日時. */
+    /** 泛用日期時間. */
     public static final String COMMON_TIME_EXAMPLE     = "2022-01-02 03:04:05";
-    /** 登録日時. */
-    public static final String INSERT_TIME_NAME        = "登録日時";
-    /** 登録日時. */
+    /** 登録日期時間. */
+    public static final String INSERT_TIME_NAME        = "新增日期時間 ex: 2020-01-02 03:04:05";
+    /** 登録日期時間範例. */
     public static final String INSERT_TIME_EXAMPLE     = "2020-01-02 03:04:05";
-    /** 更新日時. */
-    public static final String UPDATE_TIME_NAME        = "更新日時";
-    /** 更新日時. */
+    /** 更新日期時間. */
+    public static final String UPDATE_TIME_NAME        = "更新日期時間 ex: 2020-01-02 03:04:05";
+    /** 更新日期時間範例. */
     public static final String UPDATE_TIME_EXAMPLE     = "2021-01-02 03:04:05";
-    /** 履歴登録日時. */
-    public static final String HST_INSERT_TIME_NAME    = "履歴登録日時";
-    /** 履歴登録日時. */
-    public static final String HST_INSERT_TIME_EXAMPLE = "2020-01-03 03:04:05";
+    /** 上架日期時間. */
+    public static final String UPLOAD_TIME_NAME        = "上架日期時間 ex: 2020-01-02 03:04:05";
+    /** 上架日期時間範例. */
+    public static final String UPLOAD_TIME_EXAMPLE     = "2021-01-02 03:04:05";
+    /** 下架日期時間. */
+    public static final String REMOVE_TIME_NAME        = "下架日期時間 ex: 2020-01-02 03:04:05";
+    /** 下架日期時間範例. */
+    public static final String REMOVE_TIME_EXAMPLE     = "2021-01-02 03:04:05";
     /** 取得資料開始位置. */
     public static final String OFFSET_NAME             = "取得資料開始位置（分頁用）";
     /** 取得資料数. */

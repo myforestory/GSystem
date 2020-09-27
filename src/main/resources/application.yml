@@ -26,16 +26,18 @@ springboot:
   flyway:
     # Flywayの有効化(true)/無効化(false)（hibernateのddl-autoと同時に使わないこと！）
     enabled: true
-    # ★重要：本番環境ではtrueにすること！ Flaywayによるcleanを行わないようにする（true=cleanを行わない、false=cleanを行う）
+    # ★重要：本番環境ではtrueにすること！ Flywayによるcleanを行わないようにする（true=cleanを行わない、false=cleanを行う）
     cleanDisabled: true
+    clean-on-validation-error: false
+    baseline-on-migrate: true
     # Flywayでマイグレーションを行う対象ディレクトリ
     locations:
       - classpath:db/{vendor}/migration/01_base/1_init/
       - classpath:db/{vendor}/migration/01_base/2_addkey/
-      - classpath:db/{vendor}/migration/01_base/3_insert
+      - classpath:db/{vendor}/migration/01_base/3_insert/
       # マスタあり（マスタレスOFF）では以下4_masterexistのコメントアウトを外す ---
       # （逆にマスタレスでは以下はコメント化する）
-      - classpath:db/{vendor}/migration/01_base/4_masterexist
+      - classpath:db/{vendor}/migration/01_base/4_masterexist/
       # --------------------------------------------------------------------------
 
       # 開発環境では以下コメントアウトを外し、本番環境では以下をコメント化する ---
