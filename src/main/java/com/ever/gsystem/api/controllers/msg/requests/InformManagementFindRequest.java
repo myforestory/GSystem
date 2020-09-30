@@ -42,9 +42,8 @@ public class InformManagementFindRequest implements Serializable {
     private static final long serialVersionUID = 5341877110042930669L;
 
     // 檢索entities項目 ============================================================
-    /** informManagementID. */
-    @FiledOrder(1)
-    @ApiModelProperty(value = "informManagementID", position = 1)
+    /** 訊息類別管理ID. */
+    @ApiModelProperty(value = "訊息類別管理ID", position = 1)
     private List<@Min(GetRequestLimit.NUM_MIN) @Max(GetRequestLimit.NUM_MAX) Long> informManagementId;
 
     /** 訊息類別種類. */

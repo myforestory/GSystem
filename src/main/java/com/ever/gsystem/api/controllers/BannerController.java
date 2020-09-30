@@ -42,7 +42,7 @@ import java.util.Objects;
 @Api (description = ApiDocMsg.API_BANNER_ROOT_MSG)  // For Swagger API documentation
 @ Slf4j                                             // Automatically generate code that defines a logger in Lombok. Classes with this annotation can access the logger with a variable called "log"
 public class BannerController {
-    /** 首頁BannerMst畫面SERVICE. */
+    /** 首頁BannerMaster畫面SERVICE. */
     final private BannerService service;
 
     /** GET REQUEST有無驗證 */
@@ -52,9 +52,9 @@ public class BannerController {
     /**
      * 檢索API.
      *
-     * @param  req                             首頁BannerMst畫面REQUEST
+     * @param  req                             首頁BannerMaster畫面REQUEST
      * @param  validation                      驗證結果
-     * @return                                 首頁BannerMst畫面RESPONSE
+     * @return                                 首頁BannerMaster畫面RESPONSE
      * @throws MethodArgumentNotValidException CHECK ERROR
      * @throws NoSuchMethodException           Exception generation at the time of validation error (specified method could not be found)
      */
@@ -79,7 +79,7 @@ public class BannerController {
                         BannerFindRequest.class,
                         BindingResult.class);
             }
-            log.debug("首頁BannerMst畫面的Request Message的檢證失敗、因GET Request Validation無效，將照進行原來之檢索。");
+            log.debug("首頁BannerMaster畫面的Request Message的檢證失敗、因GET Request Validation無效，將照進行原來之檢索。");
         }
 
         final ResponseEntity<BannerFindResponse> res = new ResponseEntity<>(this.service.find(req),
@@ -91,9 +91,9 @@ public class BannerController {
     /**
      * 新增API.
      *
-     * @param  reqFile   首頁BannerMst畫面REQUEST(image)
-     * @param  reqBanner 首頁BannerMst畫面REQUEST(name, uploadTime, removeTime)
-     * @return           首頁BannerMst畫面RESPONSE
+     * @param  reqFile   首頁BannerMaster畫面REQUEST(image)
+     * @param  reqBanner 首頁BannerMaster畫面REQUEST(name, uploadTime, removeTime)
+     * @return           首頁BannerMaster畫面RESPONSE
      */
     @PostMapping
     @ApiOperation(value = ApiDocMsg.POST_TITLE_MSG, notes = ApiDocMsg.BANNER_NAME +
@@ -113,9 +113,9 @@ public class BannerController {
     /**
      * 更新API.
      *
-     * @param  reqFile   首頁BannerMst畫面REQUEST(image)
-     * @param  reqBanner 首頁BannerMst畫面REQUEST(name, uploadTime, removeTime)
-     * @return           首頁BannerMst畫面RESPONSE
+     * @param  reqFile   首頁BannerMaster畫面REQUEST(image)
+     * @param  reqBanner 首頁BannerMaster畫面REQUEST(name, uploadTime, removeTime)
+     * @return           首頁BannerMaster畫面RESPONSE
      */
     @PutMapping
     @ApiOperation(value = ApiDocMsg.PUT_TITLE_MSG, notes = ApiDocMsg.BANNER_NAME +
@@ -135,7 +135,7 @@ public class BannerController {
     /**
      * 刪除API.
      *
-     * @param req 首頁BannerMst畫面REQUEST
+     * @param req 首頁BannerMaster畫面REQUEST
      */
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)

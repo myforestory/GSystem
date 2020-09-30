@@ -49,6 +49,7 @@ public class MstInform implements Serializable {
     @FiledOrder(1)
     @Id
     @Column(nullable = false)
+    @NotNull
     @Min(0)
     @Max(Long.MAX_VALUE)
     @ApiModelProperty(value = "informID", position = 1)

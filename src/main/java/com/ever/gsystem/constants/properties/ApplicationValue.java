@@ -25,7 +25,7 @@ public final class ApplicationValue {
                                                             + "}";
 
     /** バッチインサート有効フラグ. */
-    public static final String BATCH_INSERT_SWITCH = "${spring.jpa.properties.hibernate.order_inserts}";
+    //public static final String BATCH_INSERT_SWITCH = "${spring.jpa.properties.hibernate.order_inserts}";
     /** バッチアップデート有効フラグ. */
     public static final String BATCH_UPDATE_SWITCH = "${spring.jpa.properties.hibernate.order_updates}";
     /** インサート/デリートバッチの数（囲み文字なし）. */

@@ -1,22 +1,23 @@
 package com.ever.gsystem.api.domain.repositories.commons.mybatis.sql;
 
-import java.util.List;
-import java.util.Map;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.jdbc.SQL;
-import com.google.common.base.CaseFormat;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
 import com.ever.gsystem.api.controllers.msg.requests.CmnFindRequest;
 import com.ever.gsystem.api.domain.entities.MstTableManagement;
 import com.ever.gsystem.api.domain.repositories.commons.mybatis.conditions.TableCondition;
 import com.ever.gsystem.api.domain.repositories.fieldinfo.FiledControllable;
 import com.ever.gsystem.constants.entityvalue.MstTableManagementDataType;
+import com.google.common.base.CaseFormat;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.NonNull;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.jdbc.SQL;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * SQL文作成.

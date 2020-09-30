@@ -18,10 +18,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 
 /**
@@ -49,10 +46,10 @@ public class MstBanner implements Serializable {
     /**
      * bannerID.
      */
-    @FiledOrder(1)
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(nullable = false)
+    @NotNull
     @Min(0)
     @Max(Long.MAX_VALUE)
     @ApiModelProperty(value = "bannerID", position = 1)

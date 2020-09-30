@@ -43,7 +43,6 @@ public class InformFindRequest implements Serializable {
 
     // 檢索entities項目 ============================================================
     /** informID. */
-    @FiledOrder(1)
     @ApiModelProperty(value = "informID", position = 1)
     private List<@Min(GetRequestLimit.NUM_MIN) @Max(GetRequestLimit.NUM_MAX) Long> informId;
 

@@ -41,7 +41,7 @@ import java.util.Objects;
 @Api (description = ApiDocMsg.API_INFORM_MANAGEMENT_ROOT_MSG)  // For Swagger API documentation
 @ Slf4j                                             // Automatically generate code that defines a logger in Lombok. Classes with this annotation can access the logger with a variable called "log"
 public class InformManagementController {
-    /** 首頁InformManagementMst畫面SERVICE. */
+    /** 訊息類別管理Master畫面SERVICE. */
     final private InformManagementService service;
 
     /** GET REQUEST有無驗證 */
@@ -51,9 +51,9 @@ public class InformManagementController {
     /**
      * 檢索API.
      *
-     * @param  req                             首頁InformManagementMst畫面REQUEST
+     * @param  req                             訊息類別管理Master畫面REQUEST
      * @param  validation                      驗證結果
-     * @return                                 首頁InformManagementMst畫面RESPONSE
+     * @return                                 訊息類別管理Master畫面RESPONSE
      * @throws MethodArgumentNotValidException CHECK ERROR
      * @throws NoSuchMethodException           Exception generation at the time of validation error (specified method could not be found)
      */
@@ -78,7 +78,7 @@ public class InformManagementController {
                         InformManagementFindRequest.class,
                         BindingResult.class);
             }
-            log.debug("首頁InformManagementMst畫面的Request Message的檢證失敗、因GET Request Validation無效，將照進行原來之檢索。");
+            log.debug("訊息類別管理Master畫面的Request Message的檢證失敗、因GET Request Validation無效，將照進行原來之檢索。");
         }
 
         final ResponseEntity<InformManagementFindResponse> res = new ResponseEntity<>(this.service.find(req),
@@ -90,8 +90,8 @@ public class InformManagementController {
     /**
      * 新增API.
      *
-     * @param  req 首頁InformManagementMst畫面REQUEST
-     * @return     首頁InformManagementMst畫面RESPONSE
+     * @param  req 訊息類別管理Master畫面REQUEST
+     * @return     訊息類別管理Master畫面RESPONSE
      */
     @PostMapping
     @ApiOperation(value = ApiDocMsg.POST_TITLE_MSG, notes = ApiDocMsg.INFORM_MANAGEMENT_NAME +
@@ -111,8 +111,8 @@ public class InformManagementController {
     /**
      * 更新API.
      *
-     * @param  req 首頁InformManagementMst畫面REQUEST
-     * @return     首頁InformManagementMst畫面RESPONSE
+     * @param  req 訊息類別管理Master畫面REQUEST
+     * @return     訊息類別管理Master畫面RESPONSE
      */
     @PutMapping
     @ApiOperation(value = ApiDocMsg.PUT_TITLE_MSG, notes = ApiDocMsg.INFORM_MANAGEMENT_NAME +
@@ -132,7 +132,7 @@ public class InformManagementController {
     /**
      * 刪除API.
      *
-     * @param req 首頁InformManagementMst畫面REQUEST
+     * @param req 訊息類別管理Master畫面REQUEST
      */
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)

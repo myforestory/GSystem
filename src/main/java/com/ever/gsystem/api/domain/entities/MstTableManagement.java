@@ -59,7 +59,6 @@ public class MstTableManagement implements Serializable {
      * Table No.<br>
      * テーブルを一意に特定する文字列。各テーブルの物理名が格納される。<br>
      */
-    @FiledOrder(1)
     @Id
     @Column(nullable = false)
     @NotBlank()

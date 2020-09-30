@@ -67,6 +67,15 @@ public final class EndpointUri {
     /** 通知消息Master畫面API RootURL. */
     public static final String TABLE_INFORM_API_ROOT                     = TOP_ROOT
                                                                          + "master/inform";
+    /** 系統管理者Master畫面API RootURL. */
+    public static final String TABLE_ADMINISTRATOR_API_ROOT              = TOP_ROOT
+                                                                         + "master/administrator";
+    /** 會員Master畫面API RootURL. */
+    public static final String TABLE_MEMBER_API_ROOT                     = TOP_ROOT
+                                                                         + "master/member";
+    /** 點數管理Master畫面API RootURL. */
+    public static final String TABLE_POINT_MANAGEMENT_API_ROOT           = TOP_ROOT
+                                                                         + "master/point-management";
     // =======================================================================================================================
 
 

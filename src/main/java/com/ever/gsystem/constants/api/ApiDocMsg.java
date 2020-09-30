@@ -96,23 +96,35 @@ public final class ApiDocMsg {
     public static final String API_POST_RESTART_NOTE_MSG                = "API SEVER REQUEST用URL。<br>"
                                                                           + API_RESTART_RESPONSE_MSG
                                                                           + "<br>※設定ファイルで、再起動自体の許可がされていないと機能しない";
-    /**  TABLE管理MASTER操作APIルートMESSAGE. */
-    public static final String API_TABLE_MANAGEMENT_ROOT_MSG            = " TABLE管理MASTER操作API（各 TABLE管理列表示・非表示機能）";
-    /** BannerMst畫面API_ROOT_MSG . */
-    public static final String API_BANNER_ROOT_MSG                      = "BannerMst畫面API";
-    /** InformManagementMst畫面API_ROOT_MSG . */
-    public static final String API_INFORM_MANAGEMENT_ROOT_MSG           = "InformManagementMst畫面API";
-    /** InformMst畫面API_ROOT_MSG . */
-    public static final String API_INFORM_ROOT_MSG                      = "InformMst畫面API";
+    /**  Table管理Master操作APIRootMessage. */
+    public static final String API_TABLE_MANAGEMENT_ROOT_MSG            = " Table管理Master操作API（各TABLE管理列表示・非表示機能）";
+    /** BannerMaster畫面API_ROOT_MSG . */
+    public static final String API_BANNER_ROOT_MSG                      = "BannerMaster畫面API";
+    /** InformManagementMaster畫面API_ROOT_MSG . */
+    public static final String API_INFORM_MANAGEMENT_ROOT_MSG           = "InformManagementMaster畫面API";
+    /** InformMaster畫面API_ROOT_MSG . */
+    public static final String API_INFORM_ROOT_MSG                      = "InformMaster畫面API";
+    /** AdministratorMaster畫面API_ROOT_MSG . */
+    public static final String API_ADMINISTRATOR_ROOT_MSG               = "AdministratorMaster畫面API";
+    /** MemberMaster畫面API_ROOT_MSG . */
+    public static final String API_MEMBER_ROOT_MSG                      = "MemberMaster畫面API";
+    /** PointManagementMaster畫面API_ROOT_MSG . */
+    public static final String API_POINT_MANAGEMENT_ROOT_MSG            = "PointManagementMaster畫面API";
 
-    /** Table管理Mst. */
-    public static final String TABLE_MANAGEMENT_NAME       = "Table管理Mst";
-    /** BannerMst. */
-    public static final String BANNER_NAME                 = "BannerMst";
-    /** InformManagementMst. */
-    public static final String INFORM_MANAGEMENT_NAME      = "InformManagementMst";
-    /** InformMst. */
-    public static final String INFORM_NAME      = "InformMst";
+    /** Table管理Master. */
+    public static final String TABLE_MANAGEMENT_NAME       = "Table管理Master";
+    /** BannerMaster. */
+    public static final String BANNER_NAME                 = "BannerMaster";
+    /** InformManagementMaster. */
+    public static final String INFORM_MANAGEMENT_NAME      = "InformManagementMaster";
+    /** InformMaster. */
+    public static final String INFORM_NAME                 = "InformMaster";
+    /** AdministratorMaster. */
+    public static final String ADMINISTRATOR_NAME          = "AdministratorMaster";
+    /** MemberMaster. */
+    public static final String MEMBER_NAME                 = "MemberMaster";
+    /** PointManagementMaster. */
+    public static final String POINT_MANAGEMENT_NAME       = "PointManagementMaster";
 
     /** 商品MASTERマッピング画面API URL. */
     public static final String MAPPING_ITEM_API_ROOT                 = "item";

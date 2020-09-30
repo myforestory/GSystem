@@ -39,7 +39,6 @@ public class BannerSingleRequest implements Serializable {
     private static final long serialVersionUID = -3261714019247385250L;
 
     /** banner標題. */
-    @FiledOrder(1)
     @Size(min = GetRequestLimit.TEXT_MIN, max = GetRequestLimit.TEXT_MAX)
     @ApiModelProperty(value = "banner標題", position = 2)
     private String name;

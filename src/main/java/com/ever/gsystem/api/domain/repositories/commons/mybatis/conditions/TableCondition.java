@@ -1,12 +1,13 @@
 package com.ever.gsystem.api.domain.repositories.commons.mybatis.conditions;
 
-import java.io.Serializable;
-import java.util.List;
 import com.ever.gsystem.api.domain.entities.MstTableManagement;
 import com.ever.gsystem.api.domain.repositories.fieldinfo.FiledControllable;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 import lombok.experimental.FieldNameConstants;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * テーブル管理画面のGET検索条件.
