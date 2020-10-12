@@ -44,7 +44,7 @@ public class MemberFindRequest implements Serializable {
     // 檢索entities項目 ============================================================
     /** 會員ID. */
     @Size(min = GetRequestLimit.TEXT_MIN, max = GetRequestLimit.TEXT_MAX)
-    @ApiModelProperty(value = "會員ID", position = 1)
+    @ApiModelProperty(value = "會員ID('memberType'+';'+'memberAccount')", position = 1)
     private String memberId;
 
     /** 會員類別. */
@@ -74,7 +74,7 @@ public class MemberFindRequest implements Serializable {
     /** 手機. */
     @FiledOrder(6)
     @ApiModelProperty(value = "手機", position = 6)
-    private List<@Min(GetRequestLimit.LIST_MIN) @Max(GetRequestLimit.LIST_MAX) Integer> mobile;
+    private String mobile;
 
     /** 性別. */
     @FiledOrder(7)
@@ -85,7 +85,7 @@ public class MemberFindRequest implements Serializable {
     /** 生日. */
     @FiledOrder(8)
     @ApiModelProperty(value = "生日", position = 8)
-    private List<@Min(GetRequestLimit.LIST_MIN) @Max(GetRequestLimit.LIST_MAX) Integer> birth;
+    private List<@Min(GetRequestLimit.LIST_MIN) @Max(GetRequestLimit.LIST_MAX) Long> birth;
 
     /** 地址. */
     @FiledOrder(9)
@@ -106,7 +106,7 @@ public class MemberFindRequest implements Serializable {
     /** 重發簡訊. */
     @FiledOrder(12)
     @ApiModelProperty(value = "重發簡訊", position = 12)
-    private List<@Min(GetRequestLimit.LIST_MIN) @Max(GetRequestLimit.LIST_MAX) Integer> re_message;
+    private List<@Min(GetRequestLimit.LIST_MIN) @Max(GetRequestLimit.LIST_MAX) Integer> reMessage;
     // =================================================================================
 
     /** 取得資料開始位置（分頁用）. */

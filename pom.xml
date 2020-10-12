@@ -32,26 +32,18 @@
         <orangesignal-csv.version>2.2.1</orangesignal-csv.version>
         <libphonenumber.version>8.11.3</libphonenumber.version>
         <jasperreports.version>6.11.0</jasperreports.version>
-        <spotbugs-annotations.version>3.1.12</spotbugs-annotations.version>
         <fastutil.version>8.3.0</fastutil.version>
         <commons-text.version>1.8</commons-text.version>
         <!--Springfox library set-->
         <springfox.version> 2.10.5 </springfox.version>
         <swagger.version> 1.6.1 </swagger.version>
         <spring-plugin-core.version> 2.0.0.RELEASE </spring-plugin-core.version>
-        <!--Local library (lib)-->
-        <epctagcoder.version> 0.0.6-SNAPSHOT </epctagcoder.version>
-        <epctagcoder.jar.path> ${basedir} /lib/epctagcoder-0.0.6-SNAPSHOT.jar </epctagcoder.jar.path>
         <bcpissuelibrary.version> 1.0 </bcpissuelibrary.version>
         <bcpissuelibrary.jar.path> ${basedir} /lib/bcpissuelibrary.jar </bcpissuelibrary.jar.path>
         <!--Build Plugin-->
         <delombok.version> 1.18.10.0 </delombok.version>
         <jacoco-maven-plugin.version> 0.8.2 </jacoco-maven-plugin.version>
-        <spotbugs-maven-plugin.version> 3.1.12.2 </spotbugs-maven-plugin.version>
-        <spotbugs.version> 4.0.0-beta4 </spotbugs.version>
-        <spotbugs.plugin.directory.path> spotbugsplugins </spotbugs.plugin.directory.path>
         <fb-contrib.version> 7.4.7 </fb-contrib.version>
-        <findsecbugs-plugin.version> 1.10.1 </findsecbugs-plugin.version>
         <swagger-codegen-maven-plugin.version> 2.4.10 </swagger-codegen-maven-plugin.version>
     </properties>
 
@@ -274,15 +266,6 @@
             <artifactId> jackson-datatype-jsr310 </artifactId>
         </dependency>
 
-        <!--[Spotbugs annotation added]-->
-        <!--Enable @SuppressFBWarnings to suppress SpotBugs warnings. -->
-        <dependency>
-            <groupId> com.github.spotbugs </groupId>
-            <artifactId> spotbugs-annotations </artifactId>
-            <version> ${spotbugs-annotations.version} </version>
-            <scope> provided </scope>
-        </dependency>
-
         <!--[Fastutil Library]-->
         <!--Fast collection library. Especially the list of primitive types is faster. -->
         <dependency>
@@ -472,39 +455,6 @@
                 </configuration>
             </plugin>
 
-            <!--[Maven installation plugin library]-->
-            <!--If there is a local jar, register it in the local repository. This plugin is built into the Spring Boot Maven Plugin library and is not required unless otherwise configured. -->
-            <plugin>
-                <groupId> org.apache.maven.plugins </groupId>
-                <artifactId> maven-install-plugin </artifactId>
-                <!--Settings for local jar-->
-                <executions>
-                    <execution>
-                        <id> install-external-epctagcoder </id>
-                        <phase> clean </phase>
-                        <!--Added EPCtagCoder library-->
-                        <configuration>
-                            <file> ${epctagcoder.jar.path} </file>
-                            <repositoryLayout> default </repositoryLayout>
-                            <groupId> org.epctagcoder </groupId>
-                            <artifactId> epctagcoder </artifactId>
-                            <version> ${epctagcoder.version} </version>
-                            <packaging> jar </packaging>
-                            <generatePom> true </generatePom>
-                        </configuration>
-                        <goals>
-                            <goal> install-file </goal>
-                        </goals>
-                    </execution>
-                    <!--Added BCP Issue library-->
-                    <!--May not be used because it is a library for Android. Decide what to do as soon as the investigation is complete <execution> <id> install-external-bcpissuelibrary </id>
-                      <phase> clean </phase> <configuration> <file> ${bcpissuelibrary.jar.path} </file> <repositoryLayout> default </repositoryLayout>
-                      <groupId> jp.co.toshibatec.bcp.library </groupId> <artifactId> bcpissuelibrary </artifactId> <version> ${bcpissuelibrary.version} </version>
-                      <packaging> jar </packing> <generatePom> true </generatePom> </configuration> <goals> <goal> install-file </goal>
-                      </goals> </execution>-->
-                </executions>
-            </plugin>
-
             <!--[Git Commit ID Plugin Library]-->
             <!--You can embed git.properties inside the jar. -->
             <plugin>
@@ -557,129 +507,6 @@
                         <arg>-Xlint:unchecked</arg>
                     </compilerArgs>
                 </configuration>
-            </plugin>
-
-            <!--[Maven Surefire Plugin Library]-->
-            <!--A library that outputs a report when testing with Maven. -->
-            <!--If the Spring Boot Maven Plugin is included, the report will be output even if this plugin itself is not set separately. -->
-            <!--However, when testing with Maven, JUnit does not garble characters, but mvn test garbles characters, so make additional settings to eliminate the cause (just garbled characters, Flyway etc. Characters registered in the DB are also garbled when reading the SQL file of → In other words, the test fails). -->
-            <!--The above happens because JUnit is started separately from the Maven execution process. Therefore, set all encodings as UTF-8 clearly in the plugin settings below. -->
-            <plugin>
-                <groupId> org.apache.maven.plugins </groupId>
-                <artifactId> maven-surefire-plugin </artifactId>
-                <configuration>
-                    <junitArtifactName> junit: junit </junitArtifactName>
-                    <!--Whether to use a class loader with built-in maven (or rather surefire)-->
-                    <!--It seems that there is a problem with true, and it is dealt with with false. See below. -->
-                    <!--https://stackoverflow.com/questions/53010200/maven-surefire-could-not-find-forkedbooter-class?noredirect=1&lq=1-->
-                    <useSystemClassLoader> false </useSystemClassLoader>
-                    <!--When certain tests complete, System.exit () may hang instead of exiting. The timeout for this hang is 30 seconds by default, but if it can be completed normally, 30 seconds is too short, so extend it. -->
-                    <!--If the forked VM crashes even if the above useSystemClassLoader is false, increase the number of seconds below (it seems that the branched JVM may crash if there is a very time-consuming test). -->
-                    <!--https://stackoverflow.com/questions/46831762/maven-build-and-maven-failsafe-plugin-the-forked-vm-terminated-without-properl-->
-                    <forkedProcessExitTimeoutInSeconds> 600 </forkedProcessExitTimeoutInSeconds>
-                    <!--Encoding of the source code under test. !! !! @ {argLine} is included so that the args set elsewhere will not be overwritten and erased! !! -->
-                    <!--See below for java.base/ ~ ALL-UNNAMED in add-opens. -->
-                    <!--Reference URL: https://docs.oracle.com/javase/jp/9/migrate/toc.htm-->
-                    <!--jdk.internal.misc: Used with Netty-->
-                    <!--java.base/java.nio: Used in Netty-->
-                    <argLine> @ {argLine} -Dfile.encoding = UTF-8 --add-opens
-                        java.base/jdk.internal.misc = ALL-UNNAMED --add-opens
-                        java.base/java.nio=ALL-UNNAMED </argLine>
-                    <!--Encoding of report output file (* -out.txt)-->
-                    <encoding> UTF-8 </encoding>
-                    <skipTests> false </skipTests> <!--True allows you to skip tests but is not recommended. If you don't want to test, specify it as a runtime argument (-Dmaven.test.skip = true)-->
-                </configuration>
-            </plugin>
-
-            <!--[JaCoCo Maven Plugin Library]-->
-            <!--The coverage file jacoco.exec is generated during the test. -->
-            <!--If you execute the "mvn jacoco: report" command while jacoco.exec is generated, the report of the html file will be output. -->
-            <plugin>
-                <groupId> org.jacoco </groupId>
-                <artifactId> jacoco-maven-plugin </artifactId>
-                <version> ${jacoco-maven-plugin.version} </version>
-                <executions>
-                    <!--Prepare a property that points to the JaCoCo runtime agent that can be passed to the application under test as a VM argument. -->
-                    <!--If argLine is set in maven-surefire-plugin, it will be overwritten on maven side, so-->
-                    <!--@ {argLine} to maven side. Example: "<argLine> @ {argLine} -your -extra -arguments </argLine>"-->
-                    <!--Reference URL: https://www.eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html-->
-                    <execution>
-                        <id> default-prepare-agent </id>
-                        <goals>
-                            <goal> prepare-agent </goal>
-                        </goals>
-                    </execution>
-                    <!--Create a code coverage report for testing a single project (output in multiple formats (HTML, XML, and CSV)). -->
-                    <execution>
-                        <id> default-report </id>
-                        <goals>
-                            <goal> report </goal>
-                        </goals>
-                    </execution>
-                    <!--Coverage measurement during testing-->
-                    <execution>
-                        <id> report </id>
-                        <phase> test </phase>
-                        <goals>
-                            <goal> report </goal>
-                        </goals>
-                    </execution>
-                    <!--Check if code coverage meets the conditions specified in rules. -->
-                    <execution>
-                        <id> default-check </id>
-                        <goals>
-                            <goal> check </goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!--SpotBugs Maven Plugin Library-->
-            <plugin>
-                <groupId> com.github.spotbugs </groupId>
-                <artifactId> spotbugs-maven-plugin </artifactId>
-                <version> ${spotbugs-maven-plugin.version} </version>
-                <dependencies>
-                    <!--Specify the version of SpotBugs-->
-                    <dependency>
-                        <groupId> com.github.spotbugs </groupId>
-                        <artifactId> spotbugs </artifactId>
-                        <version> ${spotbugs.version} </version>
-                    </dependency>
-                </dependencies>
-                <!--SpotBugs settings-->
-                <configuration>
-                    <!--Analysis power setting-->
-                    <!--[Setting value] Default: Default value (more), more: Disable interprocedural analysis of reference class, skip when bytecode is long. Others are the same as max, max: maximum analysis, min: invalid analysis that also increases memory consumption)-->
-                    <!--Detailed URL: https://spotbugs.readthedocs.io/ja/latest/effort.html-->
-                    <effort> max </effort>
-                    <!--Threshold setting-->
-                    <threshold> Default </threshold>
-                    <!--Build error when a problem is found (true) / No (false)-->
-                    <failOnError> true </failOnError>
-                    <!--Encoding of target source-->
-                    <sourceEncoding> UTF-8 </sourceEncoding>
-                    <!--With or without XML report file output-->
-                    <xmlOutput> true </xmlOutput>
-                    <!--Specify XML report file output directory-->
-                    <xmlOutputDirectory> target / spotbugs </xmlOutputDirectory>
-                    <!--Exclusion filter file path-->
-                    <excludeFilterFile> spotbugs_exclude.xml </excludeFilterFile>
-                    <!--Extended Plugin List-->
-                    <!--Find Security Bugs Plugin Library-->
-                    <!--Extension library for finding security bugs in FindBugs (SpotBugs)-->
-                    <pluginList>${spotbugs.plugin.directory.path}/findsecbugs-plugin-1.10.1.jar,${spotbugs.plugin.directory.path}/bug-pattern-1.5.0.jar,${spotbugs.plugin.directory.path}/sb-contrib-7.4.7.jar</pluginList>
-                </configuration>
-                <!--Run SpotBugs-->
-                <executions>
-                    <execution>
-                        <id> spotbugs </id>
-                        <!--Execution phase-->
-                        <phase> test </phase>
-                        <goals>
-                            <goal> check </goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <!--[JavaDoc Library]-->
@@ -762,12 +589,6 @@
                         </reports>
                     </reportSet>
                 </reportSets>
-            </plugin>
-            <!--SpotBugs Report Settings-->
-            <plugin>
-                <groupId> com.github.spotbugs </groupId>
-                <artifactId> spotbugs-maven-plugin </artifactId>
-                <version> ${spotbugs-maven-plugin.version} </version>
             </plugin>
         </plugins>
     </reporting>

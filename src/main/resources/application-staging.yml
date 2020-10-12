@@ -1,0 +1,73 @@
+spring:
+  #Enable / disable Lazy Initialization. Set whether to generate the Bean of ApplicationContext when the target bean is called, not when the application is started.
+  main.lazy-initialization: false
+  #Profile name
+  profiles: local
+  # DB individual setting
+  datasource:
+    #DB individual setting (primary)
+    driverClassName: com.mysql.cj.jdbc.Driver
+    #DB connection URL
+    #Basic syntax: Protocol // [hostname] [/databaseName] [? Properties] ...
+    url: jdbc:mysql://db:3306/gsystem
+    username: "root"
+    #Password
+    password: "CBi-gsystem"
+    initialization-mode: NEVER
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+  mvc:
+    # Do not mask the DEBUG log of the request message (true), do (false)
+    log-request-details: true
+  flyway:
+    # Enable (true) / disable (false) Flyway (do not use at the same time as hibernate ddl-auto!)
+    enabled: true
+    # ★ Important: Make it true in a production environment! Do not clean by Flyway (do not do true = clean, do false = clean)
+    cleanDisabled: false
+    clean-on-validation-error: false
+    baseline-on-migrate: true
+    #Flyway migration target directory
+    locations:
+      - classpath:db/{vendor}/migration/01_base/1_init/
+      - classpath:db/{vendor}/migration/01_base/2_addkey/
+      - classpath:db/{vendor}/migration/01_base/3_insert/
+      # With master (masterless OFF), uncomment the following 4_masterexist ---
+      # (Conversely, in masterless, comment the following)
+      - classpath:db/{vendor}/migration/01_base/4_masterexist/
+      # --------------------------------------------------------------------------
+      #Uncomment the following in the development environment, and comment out the following in the production environment ---
+      - classpath:db/{vendor}/migration/09_test_data
+      # --------------------------------------------------------------------------
+#Spring Boot original setting
+springboot:
+  # API server restart settings (true: enable restart with API request, false: prevent restart with API request)
+  can-restarted: true
+  #Allow GET request to be used to restart API server (true: GET can be restarted, false: GET cannot be restarted)
+  can-get-restarted: true
+  # GET request validation (true: yes, false: no) * Since the GET request is a screen search system, false is usually sufficient.
+  get-validator: false
+  # security settings
+  security:
+    # Whether to output exception contents other than the time when an unexpected exception occurs (FULL: Output all exceptions, PARTIAL: Output only part of the contents, NONE: Do not output) * Request a detailed error message If you don't want to let us know, set it to NONE
+    unexpected-err-msg: PARTIAL
+
+#Mybatis settings
+mybatis:
+  # Mybatis execution mode
+  executor-type: BATCH
+  #Mybatis settings
+  configuration:
+    # Enable / disable lazy loading (true) / disable (false)
+    lazy-loading-enabled: false
+    #Multiple result set enable (true) / disable (false). Whether to allow or disallow returning multiple ResultSets
+    multiple-result-sets-enabled: true
+    #Automatic mapping behavior
+    auto-mapping-behavior: FULL
+    # Map from underscore to camel case. Underscore on the DB side is set to lower camel case on the POJO side during automatic mapping.
+    map-underscore-to-camel-case: true
+    #Unknown column behavior automatic mapping. Behavior when a column that does not have a property to be automatically mapped is detected
+    auto-mapping-unknown-column-behavior: WARNING
+    #Blank instance return settings. The default behavior (false) is to return null if all retrieved columns are NULL, but return an empty instance if set to true.
+    return-instance-for-empty-row: true

@@ -58,6 +58,7 @@ public class MstInformManagement implements Serializable {
      * informManagementID.
      */
     @Id
+    @FiledOrder(1)
     @Column(nullable = false)
     @NotNull
     @Min(0)

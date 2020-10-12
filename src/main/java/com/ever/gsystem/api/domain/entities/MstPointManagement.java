@@ -42,6 +42,7 @@ public class MstPointManagement implements Serializable {
      * 點數管理ID.
      */
     @Id
+    @FiledOrder(1)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(nullable = false)
     @NotNull
@@ -52,15 +53,15 @@ public class MstPointManagement implements Serializable {
 
     /**
      * 會員ID.<br>
-     * ("member_type"+";"+"member_account")<br>
+     * ('memberType'+';'+'memberAccount')<br>
      * (ex: FB;0934300300)
      */
     @FiledOrder(2)
     @Column(nullable = false)
     @NotBlank()
     @Size(min = 1, max = 200)
-    @ApiModelProperty(value = "會員ID", position = 2)
-    private String member_id;
+    @ApiModelProperty(value = "會員ID('memberType'+';'+'memberAccount')", position = 2)
+    private String memberId;
 
     /**
      * 到期日.<br>

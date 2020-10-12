@@ -5,18 +5,18 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * カバレッジに含めない注釈.
+ * Annotations not included in coverage.
  * <p>
- * このアノテーションを付けることによって、JaCoCoカバレッジに含めないようにできる。<br>
- * メインクラス等、単体テストで実行したない箇所に付ける。<br>
- * 単体テストできるクラスに付けるのは禁止！<br>
+ * By adding this annotation, it can be excluded from JaCoCo coverage. <br>
+ * Attach to places that are not executed in unit tests, such as the main class. <br>
+ * Do not attach to classes that can be unit tested! <br>
  * </p>
  *
  * @since   0.0.1-SNAPSHOT
- * @since   2019/12/22
+ * @since   2020/09/23
  * @version 0.0.1-SNAPSHOT
- * @author  Hiroshi Takano
+ * @author  Zeng YanYun
  */
-@Retention(RetentionPolicy.CLASS) // アノテーションを保持する範囲
-@Documented                       // Javadocでアノテーションを出力してもらう
+@Retention(RetentionPolicy.CLASS) // Range to hold annotations
+@Documented                       // Have Javadoc output annotations
 public @interface Generated {/* 空 */}

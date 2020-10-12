@@ -1,45 +1,18 @@
+# === Common profile ============================================ ====
+# ● Spring Boot common settings
 spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3307/gsystem
-    username: "root"
-    password: "dev"
-  jpa:
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
-
-# ●独自設定 ============================================================================================
-# Spring Boot独自設定
-springboot:
-  # APIサーバの再起動設定（true:APIリクエストで再起動できるようにする、false:APIリクエストで再起動できないようにする）
-  can-restarted: true
-  # APIサーバの再起動にGETリクエストも使えるようにする（true:GETで再起動できるようにする、false:GETで再起動できないようにする）
-  can-get-restarted: true
-  # GETリクエストのバリデーション（true:行う、false:行わない） ※GETリクエストは画面の検索系のため通常はfalseで良い。
-  get-validator: false
-  # セキュリティ設定
-  security:
-    # 予期せぬ例外が発生したときに、発生時刻以外に例外内容を出すかどうか（FULL：例外をすべて出力、PARTIAL：一部だけ内容を出力、NONE：出力しない） ※詳細なエラーメッセージをリクエスト元に知らせたくない場合はNONEにする
-    unexpected-err-msg: PARTIAL
-
-  flyway:
-    # Flywayの有効化(true)/無効化(false)（hibernateのddl-autoと同時に使わないこと！）
-    enabled: true
-    # ★重要：本番環境ではtrueにすること！ Flywayによるcleanを行わないようにする（true=cleanを行わない、false=cleanを行う）
-    cleanDisabled: true
-    clean-on-validation-error: false
-    baseline-on-migrate: true
-    # Flywayでマイグレーションを行う対象ディレクトリ
-    locations:
-      - classpath:db/{vendor}/migration/01_base/1_init/
-      - classpath:db/{vendor}/migration/01_base/2_addkey/
-      - classpath:db/{vendor}/migration/01_base/3_insert/
-      # マスタあり（マスタレスOFF）では以下4_masterexistのコメントアウトを外す ---
-      # （逆にマスタレスでは以下はコメント化する）
-      - classpath:db/{vendor}/migration/01_base/4_masterexist/
-      # --------------------------------------------------------------------------
-
-      # 開発環境では以下コメントアウトを外し、本番環境では以下をコメント化する ---
-      - classpath:db/{vendor}/migration/09_test_data
-    # --------------------------------------------------------------------------
+  # Usage profile settings
+  profiles:
+    #Enable configuration file
+    # ・ Specify the xxx part in "application-xxx.yml" of the same file
+    active: local
+  #Output settings
+  output:
+    ansi:
+      #Enable / disable (never) / automate (detect) ANSI color output of console log ← Default setting
+      # "Always" is forcibly displayed in color, but note that in the case of Windows, it will not be displayed in color unless "server / tool / ansicon / x64 / install.bat" is installed.
+      enabled: always
+# ● Log common settings
+logging:
+  #Log file path
+  file: log/server.log

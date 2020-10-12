@@ -8,7 +8,6 @@ import com.ever.gsystem.constants.entityvalue.MstTableManagementDataType;
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.NonNull;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -187,7 +186,6 @@ public class SqlProvider {
      * @param sql       SQL生成クラスのインスタンス
      * @param sortValue ソートリスト
      */
-    @SuppressFBWarnings(value = "PDP_POORLY_DEFINED_PARAMETER", justification = "[Bug kind:PDP]曖昧な型のオブジェクトをキャストしている(Object→Iterable<String>)。設計上どうしても避けられないキャストなので許して貰う。")
     public static void createSortSQL(final SQL sql, final Object sortValue) {
         // ソートリストがnullの場合は何もしない
         if (sortValue == null) {
@@ -353,7 +351,6 @@ public class SqlProvider {
      * @param searchValue 検索したい数値リスト
      * @param dataType    データタイプ
      */
-    @SuppressFBWarnings(value = "PDP_POORLY_DEFINED_PARAMETER", justification = "[Bug kind:PDP]曖昧な型のオブジェクトをキャストしている(Object→List<Object>)。設計上どうしても避けられないキャストなので許して貰う。")
     public static void createWhereNumOrDateTypeSQL(final SQL sql,
                                                    final String dbColName,
                                                    final String placeholder,
@@ -481,9 +478,6 @@ public class SqlProvider {
      * @param placeholder SQLのプレースホルダー名
      * @param searchValue 検索したい数値リスト
      */
-    @SuppressFBWarnings(value = {"PDP_POORLY_DEFINED_PARAMETER",
-                                 "DLS_DEAD_LOCAL_STORE"}, justification = "[Bug kind:PDP]曖昧な型のオブジェクトをキャストしている(Object→Iterable<Object>)。設計上どうしても避けられないキャストなので許して貰う。\r\n"
-                                                                          + "[Bug kind:DLS]listへ無効な代入をしている。実際には無効な代入ではないため、バイトコードレベルで無意味な格納をしている箇所があるものと思われる。ソース上では問題ないため、誤検知とする。")
     public static void createWhereListTypeSQL(final SQL sql,
                                               final String dbColName,
                                               final String placeholder,

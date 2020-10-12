@@ -47,6 +47,7 @@ public class MstBanner implements Serializable {
      * bannerID.
      */
     @Id
+    @FiledOrder(1)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(nullable = false)
     @NotNull

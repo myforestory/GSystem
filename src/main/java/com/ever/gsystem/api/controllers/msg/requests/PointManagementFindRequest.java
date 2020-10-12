@@ -49,7 +49,7 @@ public class PointManagementFindRequest implements Serializable {
     /** 會員ID. */
     @FiledOrder(2)
     @Size(min = GetRequestLimit.TEXT_MIN, max = GetRequestLimit.TEXT_MAX)
-    @ApiModelProperty(value = "會員ID", position = 2)
+    @ApiModelProperty(value = "會員ID('memberType'+';'+'memberAccount')", position = 2)
     private String memberId;
 
     /** 到期日. */

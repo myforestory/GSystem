@@ -87,6 +87,8 @@ public class MemberService {
      */
     @Transactional
     public MemberSingleResponse save(final MemberSingleRequest req) {
+        String memberId = req.getMstMember().getMemberType() +";"+ req.getMstMember().getMemberAccount();
+        req.setMstMember(req.getMstMember().setMemberId(memberId));
         // 更新＆Response做成
         final MemberSingleResponse res = MemberSingleResponse.builder()
                 .mstMember(this.mstMemberRepository.save(req.getMstMember()))  // MemberMaster中一筆資料更新

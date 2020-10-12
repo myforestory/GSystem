@@ -43,10 +43,11 @@ public class MstMember implements Serializable {
 
     /**
      * 會員ID.<br>
-     * ("member_type"+";"+"member_account")<br>
+     * ('memberType'+';'+'memberAccount')<br>
      * (ex: FB;0934300300)
      */
     @Id
+    @FiledOrder(1)
     @Column(nullable = false)
     @NotBlank()
     @Size(min = 1, max = 200)
@@ -97,10 +98,9 @@ public class MstMember implements Serializable {
      * (ex：0934300300)
      */
     @FiledOrder(6)
-    @Min(0)
-    @Max(12)
+    @Size(min = 1, max = 20)
     @ApiModelProperty(value = "手機", position = 6)
-    private Integer mobile;
+    private String mobile;
 
     /**
      * 性別.
@@ -116,9 +116,9 @@ public class MstMember implements Serializable {
      */
     @FiledOrder(8)
     @Min(0)
-    @Max(10)
+    @Max(20)
     @ApiModelProperty(value = "生日", position = 8)
-    private Integer birth;
+    private Long birth;
 
     /**
      * 地址.
@@ -156,5 +156,5 @@ public class MstMember implements Serializable {
     @Min(0)
     @Max(2)
     @ApiModelProperty(value = "重發簡訊", position = 12)
-    private Byte re_message;
+    private Byte reMessage;
 }

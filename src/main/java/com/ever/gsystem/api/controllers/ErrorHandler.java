@@ -1,39 +1,21 @@
 package com.ever.gsystem.api.controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.validation.ConstraintViolation;
-import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.springframework.core.MethodParameter;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import com.fasterxml.jackson.databind.JsonMappingException.Reference;
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.ever.gsystem.api.controllers.msg.responses.ErrorResponse;
 import com.ever.gsystem.api.domain.entities.MstBanner;
 import com.ever.gsystem.constants.ErrorCdMsg;
-import com.ever.gsystem.constants.api.EntityDateFormat;
-import com.ever.gsystem.constants.api.ResultMsg;
 import com.ever.gsystem.constants.properties.SpringbootSetting;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.MethodParameter;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * ERROR HANDLER.
@@ -89,7 +71,6 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
      * @return                       検証失敗例外
      * @throws NoSuchMethodException 検証エラー時のException生成の書き方に問題がある（指定したメソッドが見つからなかった）
      */
-    @SuppressFBWarnings(value = "CLI_CONSTANT_LIST_INDEX", justification = "[Bug kind:CLI]配列のインデックスにリテラルを使っている。しかし、getStackTrace()[2]のインデックス:2は呼び出し元メソッドを示すため、リテラル使用を許して貰う。")
     public static MethodArgumentNotValidException createValidException(final BindingResult varidation,
                                                                        final Class<?> clazz,
                                                                        final Class<?>... parameterTypes) throws NoSuchMethodException {

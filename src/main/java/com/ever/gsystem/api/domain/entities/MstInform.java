@@ -46,8 +46,8 @@ public class MstInform implements Serializable {
     /**
      * informID.
      */
-    @FiledOrder(1)
     @Id
+    @FiledOrder(1)
     @Column(nullable = false)
     @NotNull
     @Min(0)
